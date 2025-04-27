@@ -40,7 +40,7 @@ export default function OpeningScreen() {
       this.size = Math.random() * 1.5 + 0.5
       this.density = Math.random() * 30 + 1
       this.color = "white"
-      this.scatteredColor = isTitle ? "#6366f1" : "#8b5cf6" // Indigo for title, purple for subtitle
+      this.scatteredColor = isTitle ? "#3b82f6" : "#60a5fa" // Blue for title, lighter blue for subtitle
       this.isTitle = isTitle
       this.life = Math.random() * 100 + 50
     }
@@ -100,7 +100,7 @@ export default function OpeningScreen() {
       this.size = Math.random() * 2 + 0.1
       this.speedX = Math.random() * 0.5 - 0.25
       this.speedY = Math.random() * 0.5 - 0.25
-      this.color = `rgba(99, 102, 241, ${Math.random() * 0.5 + 0.25})`
+      this.color = `rgba(59, 130, 246, ${Math.random() * 0.5 + 0.25})` // Blue color
     }
 
     update(canvas: HTMLCanvasElement) {
@@ -230,7 +230,7 @@ export default function OpeningScreen() {
 
         if (distance < maxDistance) {
           const opacity = 1 - distance / maxDistance
-          ctx.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.2})`
+          ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.2})` // Blue color
           ctx.lineWidth = 0.5
           ctx.beginPath()
           ctx.moveTo(particles[a].x, particles[a].y)

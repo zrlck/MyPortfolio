@@ -32,7 +32,7 @@ export default function Hero() {
         this.size = Math.random() * 2 + 0.1
         this.speedX = Math.random() * 0.5 - 0.25
         this.speedY = Math.random() * 0.5 - 0.25
-        this.color = `rgba(99, 102, 241, ${Math.random() * 0.5 + 0.25})`
+        this.color = `rgba(59, 130, 246, ${Math.random() * 0.5 + 0.25})` // Blue color
       }
 
       update() {
@@ -70,7 +70,7 @@ export default function Hero() {
 
           if (distance < maxDistance) {
             const opacity = 1 - distance / maxDistance
-            ctx!.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.2})`
+            ctx!.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.2})` // Blue color
             ctx!.lineWidth = 0.5
             ctx!.beginPath()
             ctx!.moveTo(particles[a].x, particles[a].y)
