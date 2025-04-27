@@ -28,9 +28,13 @@ export default function OpeningScreen() {
     baseY: number
     density: number
     color: string
+    originalSize: number
     scatteredColor: string
+    secondaryColor: string
+    colorTransition: number
     life: number
     isTitle: boolean
+    glowEffect: number
 
     constructor(x: number, y: number, isTitle: boolean) {
       this.x = x
@@ -38,19 +42,35 @@ export default function OpeningScreen() {
       this.baseX = x
       this.baseY = y
       this.size = Math.random() * 1.5 + 0.5
+      this.originalSize = this.size
       this.density = Math.random() * 30 + 1
       this.color = "white"
       this.scatteredColor = isTitle ? "#3b82f6" : "#60a5fa" // Blue for title, lighter blue for subtitle
+      // More contrasting secondary colors - vibrant purple for title, magenta for subtitle
+      this.secondaryColor = isTitle ? "#8b5cf6" : "#d946ef" // Vibrant purple/magenta
+      this.colorTransition = 0 // 0 = primary color, 1 = secondary color
       this.isTitle = isTitle
       this.life = Math.random() * 100 + 50
+      this.glowEffect = 0
     }
 
     draw(ctx: CanvasRenderingContext2D) {
+      // Add glow effect when secondary color is active
+      if (this.colorTransition > 0.3) {
+        ctx.shadowBlur = 5 * this.colorTransition
+        ctx.shadowColor = this.secondaryColor
+      } else {
+        ctx.shadowBlur = 0
+      }
+
       ctx.fillStyle = this.color
       ctx.beginPath()
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
       ctx.closePath()
       ctx.fill()
+
+      // Reset shadow
+      ctx.shadowBlur = 0
     }
 
     update(mouseX: number, mouseY: number) {
@@ -67,7 +87,7 @@ export default function OpeningScreen() {
       const dx = mouseX - this.x
       const dy = mouseY - this.y
       const distance = Math.sqrt(dx * dx + dy * dy)
-      const maxDistance = 100
+      const maxDistance = 120 // Increased interaction radius
 
       if (distance < maxDistance && (isTouchingRef.current || !("ontouchstart" in window))) {
         const force = (maxDistance - distance) / maxDistance
@@ -76,12 +96,61 @@ export default function OpeningScreen() {
         const moveY = Math.sin(angle) * force * 60
         this.x = this.baseX - moveX
         this.y = this.baseY - moveY
-        this.color = this.scatteredColor
+
+        // Calculate color transition based on distance from mouse
+        // More dramatic transition - faster change to secondary color
+        this.colorTransition = Math.min(1, (maxDistance - distance) / (maxDistance * 0.5))
+
+        // Increase size when close to mouse for more visual emphasis
+        this.size = this.originalSize * (1 + this.colorTransition * 0.5)
+
+        // Blend between primary and secondary colors based on transition value
+        if (this.colorTransition > 0) {
+          // Use a more dramatic color blending that emphasizes the secondary color
+          this.color = this.blendColors(this.scatteredColor, this.secondaryColor, this.colorTransition)
+        } else {
+          this.color = this.scatteredColor
+        }
       } else {
         this.x += (this.baseX - this.x) * 0.1
         this.y += (this.baseY - this.y) * 0.1
-        this.color = "white"
+
+        // Slower fade-out of the secondary color effect
+        this.colorTransition = Math.max(0, this.colorTransition - 0.03)
+
+        // Gradually return to original size
+        this.size = this.originalSize * (1 + this.colorTransition * 0.5)
+
+        if (this.colorTransition > 0) {
+          this.color = this.blendColors(this.scatteredColor, this.secondaryColor, this.colorTransition)
+        } else {
+          this.color = "white"
+        }
       }
+    }
+
+    // Enhanced color blending function for more dramatic effect
+    blendColors(color1: string, color2: string, ratio: number): string {
+      // Convert hex to RGB
+      const r1 = Number.parseInt(color1.substring(1, 3), 16)
+      const g1 = Number.parseInt(color1.substring(3, 5), 16)
+      const b1 = Number.parseInt(color1.substring(5, 7), 16)
+
+      const r2 = Number.parseInt(color2.substring(1, 3), 16)
+      const g2 = Number.parseInt(color2.substring(3, 5), 16)
+      const b2 = Number.parseInt(color2.substring(5, 7), 16)
+
+      // Use a non-linear blending for more dramatic effect
+      // Apply easing function to ratio to make transition more pronounced
+      const easedRatio = ratio < 0.5 ? 2 * ratio * ratio : 1 - Math.pow(-2 * ratio + 2, 2) / 2
+
+      // Blend colors with eased ratio
+      const r = Math.round(r1 * (1 - easedRatio) + r2 * easedRatio)
+      const g = Math.round(g1 * (1 - easedRatio) + g2 * easedRatio)
+      const b = Math.round(b1 * (1 - easedRatio) + b2 * easedRatio)
+
+      // Convert back to hex
+      return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`
     }
   }
 
@@ -276,6 +345,26 @@ export default function OpeningScreen() {
     ctx.fill()
   }
 
+  // Function to visualize mouse interaction radius
+  function drawMouseInteractionRadius(ctx: CanvasRenderingContext2D, x: number, y: number) {
+    if (x === 0 && y === 0) return // Don't draw when mouse is outside
+
+    // Create a subtle pulse effect
+    const time = Date.now() * 0.001
+    const pulseSize = Math.sin(time * 2) * 5 + 120 // Pulse between 115-125
+
+    // Draw a subtle circle to show interaction area
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, pulseSize)
+    gradient.addColorStop(0, "rgba(139, 92, 246, 0.05)") // Purple core
+    gradient.addColorStop(0.5, "rgba(139, 92, 246, 0.03)") // Fade out
+    gradient.addColorStop(1, "rgba(139, 92, 246, 0)") // Transparent edge
+
+    ctx.fillStyle = gradient
+    ctx.beginPath()
+    ctx.arc(x, y, pulseSize, 0, Math.PI * 2)
+    ctx.fill()
+  }
+
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -417,6 +506,11 @@ export default function OpeningScreen() {
 
       // Handle text particles
       const { x: mouseX, y: mouseY } = mousePositionRef.current
+
+      // Visualize mouse interaction radius if mouse is active
+      if ((mouseX !== 0 || mouseY !== 0) && !isEntering) {
+        drawMouseInteractionRadius(ctx, mouseX, mouseY)
+      }
 
       for (let i = 0; i < particlesRef.current.length; i++) {
         const p = particlesRef.current[i]
