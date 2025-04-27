@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { Menu, X, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
+import { useFocusTrap } from "../hooks/use-focus-trap"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -15,6 +16,8 @@ export default function Navbar() {
   const [currentHash, setCurrentHash] = useState("")
   const pathname = usePathname()
   const router = useRouter()
+
+  const mobileMenuRef = useFocusTrap(isOpen)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +39,15 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("hashchange", handleHashChange)
+    }
+  }, [])
+
+  useEffect(() => {
+    const handleCloseMobileMenu = () => setIsOpen(false)
+    document.addEventListener("closeMobileMenu", handleCloseMobileMenu)
+
+    return () => {
+      document.removeEventListener("closeMobileMenu", handleCloseMobileMenu)
     }
   }, [])
 
@@ -96,7 +108,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-40 w-full transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         isScrolled ? "bg-background/80 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
@@ -133,6 +145,15 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Backdrop overlay for mobile menu */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm md:hidden"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {isOpen && (
@@ -141,16 +162,19 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden"
+            className="absolute left-0 right-0 top-16 z-50 md:hidden"
           >
-            <div className="container mx-auto bg-background/95 px-4 pb-6 backdrop-blur-md">
+            <div
+              ref={mobileMenuRef}
+              className="container mx-auto bg-background/95 px-4 pb-6 pt-2 shadow-lg backdrop-blur-md"
+            >
               <nav className="flex flex-col space-y-4">
                 {navLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleNavigation(e, link.href, link.isPage)}
-                    className={`py-2 text-sm transition-colors hover:text-primary ${
+                    className={`mobile-nav-link text-sm transition-colors hover:text-primary ${
                       isActive(link.href) ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
