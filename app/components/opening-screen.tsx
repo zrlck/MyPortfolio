@@ -42,8 +42,9 @@ export default function OpeningScreen() {
       this.size = Math.random() * 1.5 + 0.5
       this.density = Math.random() * 30 + 1
       this.color = "white"
-      this.scatteredColor = isTitle ? "#3b82f6" : "#60a5fa" // Blue for title, lighter blue for subtitle
-      this.secondaryColor = isTitle ? "#06b6d4" : "#22d3ee" // Cyan for title, lighter cyan for subtitle
+      // Updated colors: Light blue for title, purple for subtitle
+      this.scatteredColor = isTitle ? "#60a5fa" : "#a78bfa" // Light blue for title, purple for subtitle
+      this.secondaryColor = isTitle ? "#93c5fd" : "#c4b5fd" // Lighter blue for title, lighter purple for subtitle
       this.colorTransition = 0 // 0 = primary color, 1 = secondary color
       this.isTitle = isTitle
       this.life = Math.random() * 100 + 50
@@ -140,7 +141,16 @@ export default function OpeningScreen() {
       this.size = Math.random() * 2 + 0.1
       this.speedX = Math.random() * 0.5 - 0.25
       this.speedY = Math.random() * 0.5 - 0.25
-      this.color = `rgba(59, 130, 246, ${Math.random() * 0.5 + 0.25})` // Blue color
+
+      // Updated to alternate between light blue and purple particles
+      const colorChoice = Math.random()
+      if (colorChoice < 0.6) {
+        // 60% light blue particles with varying opacity
+        this.color = `rgba(96, 165, 250, ${Math.random() * 0.5 + 0.25})`
+      } else {
+        // 40% purple particles with varying opacity
+        this.color = `rgba(167, 139, 250, ${Math.random() * 0.5 + 0.25})`
+      }
     }
 
     update(canvas: HTMLCanvasElement) {
@@ -199,12 +209,23 @@ export default function OpeningScreen() {
       this.speedX = Math.random() * 0.2 - 0.1
       this.speedY = Math.random() * 0.2 - 0.1
 
-      // Use more blue tones in the color palette
-      const hue = Math.random() < 0.7 ? 210 : 230 // 70% bright blue, 30% deeper blue
-      const saturation = 80 + Math.random() * 20
-      const lightness = 65 + Math.random() * 15
-      this.color = `hsla(${hue}, ${saturation}%, ${lightness}%, 0.8)`
+      // Updated color palette to match light blue and purple theme
+      const colorChoice = Math.random()
+      let hue, saturation, lightness
 
+      if (colorChoice < 0.5) {
+        // 50% light blue particles
+        hue = 210 + Math.random() * 10 // Blue hues
+        saturation = 80 + Math.random() * 20
+        lightness = 70 + Math.random() * 15
+      } else {
+        // 50% purple particles
+        hue = 260 + Math.random() * 10 // Purple hues
+        saturation = 75 + Math.random() * 20
+        lightness = 70 + Math.random() * 15
+      }
+
+      this.color = `hsla(${hue}, ${saturation}%, ${lightness}%, 0.8)`
       this.alpha = Math.random() * 0.5 + 0.3
     }
 
@@ -270,7 +291,25 @@ export default function OpeningScreen() {
 
         if (distance < maxDistance) {
           const opacity = 1 - distance / maxDistance
-          ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.2})` // Blue color
+
+          // Determine line color based on connected particles
+          // This creates a nice blend between blue and purple connections
+          const isBlueA = particles[a].color.includes("165")
+          const isBlueB = particles[b].color.includes("165")
+
+          let lineColor
+          if (isBlueA && isBlueB) {
+            // Blue to blue connection
+            lineColor = `rgba(96, 165, 250, ${opacity * 0.2})`
+          } else if (!isBlueA && !isBlueB) {
+            // Purple to purple connection
+            lineColor = `rgba(167, 139, 250, ${opacity * 0.2})`
+          } else {
+            // Blue to purple connection - blend the colors
+            lineColor = `rgba(131, 152, 250, ${opacity * 0.2})`
+          }
+
+          ctx.strokeStyle = lineColor
           ctx.lineWidth = 0.5
           ctx.beginPath()
           ctx.moveTo(particles[a].x, particles[a].y)
@@ -297,17 +336,17 @@ export default function OpeningScreen() {
     const gradient = ctx.createRadialGradient(x, y, radius * 0.5, x, y, glowRadius)
 
     if (isHovering) {
-      // More prominent blue hue with broader dispersion on hover
-      gradient.addColorStop(0, "rgba(56, 182, 255, 0.4)") // Bright blue core
-      gradient.addColorStop(0.4, "rgba(30, 144, 255, 0.25)") // Medium blue mid
-      gradient.addColorStop(0.7, "rgba(0, 128, 255, 0.1)") // Deeper blue outer
-      gradient.addColorStop(1, "rgba(0, 102, 255, 0)") // Fade to transparent
+      // Updated to a blend of light blue and purple for hover state
+      gradient.addColorStop(0, "rgba(147, 197, 253, 0.4)") // Light blue core
+      gradient.addColorStop(0.3, "rgba(139, 92, 246, 0.25)") // Purple mid
+      gradient.addColorStop(0.7, "rgba(96, 165, 250, 0.1)") // Light blue outer
+      gradient.addColorStop(1, "rgba(167, 139, 250, 0)") // Fade to transparent
     } else {
-      // Subtle blue glow when not hovering
-      gradient.addColorStop(0, "rgba(56, 182, 255, 0.2)") // Bright blue core
-      gradient.addColorStop(0.5, "rgba(30, 144, 255, 0.1)") // Medium blue mid
-      gradient.addColorStop(0.8, "rgba(0, 128, 255, 0.05)") // Deeper blue outer
-      gradient.addColorStop(1, "rgba(0, 102, 255, 0)") // Fade to transparent
+      // Subtle glow when not hovering
+      gradient.addColorStop(0, "rgba(147, 197, 253, 0.2)") // Light blue core
+      gradient.addColorStop(0.5, "rgba(139, 92, 246, 0.1)") // Purple mid
+      gradient.addColorStop(0.8, "rgba(96, 165, 250, 0.05)") // Light blue outer
+      gradient.addColorStop(1, "rgba(167, 139, 250, 0)") // Fade to transparent
     }
 
     ctx.fillStyle = gradient
@@ -619,10 +658,10 @@ export default function OpeningScreen() {
               ref={buttonRef}
               onClick={handleEnter}
               disabled={isEntering}
-              className="group relative overflow-hidden rounded-full border border-blue-500/30 bg-transparent px-8 py-3 text-lg font-medium text-white transition-all duration-300 hover:border-blue-400/70 hover:shadow-lg hover:shadow-blue-500/20 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 focus:ring-offset-black"
+              className="group relative overflow-hidden rounded-full border border-blue-400/30 bg-transparent px-8 py-3 text-lg font-medium text-white transition-all duration-300 hover:border-purple-400/70 hover:shadow-lg hover:shadow-purple-500/20 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 focus:ring-offset-black"
             >
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-blue-100">Enter</span>
-              <span className="absolute inset-0 z-0 bg-gradient-to-r from-blue-900/10 to-cyan-900/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-purple-100">Enter</span>
+              <span className="absolute inset-0 z-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
             </button>
           </motion.div>
         </div>
