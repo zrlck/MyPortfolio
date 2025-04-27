@@ -107,3 +107,57 @@
 .card-hover {
   @apply transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 hover:border-indigo-500/50;
 }
+
+@keyframes orbit-1 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(100px) translateY(-20px);
+  }
+  50% {
+    transform: translateX(0) translateY(-100px);
+  }
+  75% {
+    transform: translateX(-100px) translateY(-20px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes orbit-2 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-80px) translateY(40px);
+  }
+  50% {
+    transform: translateX(0) translateY(80px);
+  }
+  75% {
+    transform: translateX(80px) translateY(40px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes orbit-3 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(60px) translateY(60px);
+  }
+  50% {
+    transform: translateX(0) translateY(60px);
+  }
+  75% {
+    transform: translateX(-60px) translateY(60px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}

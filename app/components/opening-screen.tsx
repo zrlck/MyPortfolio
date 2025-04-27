@@ -15,6 +15,8 @@ export default function OpeningScreen() {
   const isTouchingRef = useRef(false)
   const [isMobile, setIsMobile] = useState(false)
   const backgroundParticlesRef = useRef<BackgroundParticle[]>([])
+  const buttonParticlesRef = useRef<ButtonParticle[]>([])
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   // Particle class for text animation
   class Particle {
@@ -108,6 +110,86 @@ export default function OpeningScreen() {
     }
   }
 
+  // Button particle class for the Enter button
+  class ButtonParticle {
+    x: number
+    y: number
+    size: number
+    speedX: number
+    speedY: number
+    color: string
+    alpha: number
+    centerX: number
+    centerY: number
+    radius: number
+    angle: number
+    angleSpeed: number
+    distanceFromCenter: number
+
+    constructor(centerX: number, centerY: number, radius: number) {
+      this.centerX = centerX
+      this.centerY = centerY
+      this.radius = radius
+      this.angle = Math.random() * Math.PI * 2
+      this.angleSpeed = (Math.random() * 0.02 - 0.01) * (Math.random() < 0.5 ? -1 : 1)
+      this.distanceFromCenter = Math.random() * radius * 0.8 + radius * 0.2
+
+      this.x = centerX + Math.cos(this.angle) * this.distanceFromCenter
+      this.y = centerY + Math.sin(this.angle) * this.distanceFromCenter
+
+      this.size = Math.random() * 1.5 + 0.5
+      this.speedX = Math.random() * 0.2 - 0.1
+      this.speedY = Math.random() * 0.2 - 0.1
+
+      // Use more blue tones in the color palette
+      const hue = Math.random() < 0.7 ? 210 : 230 // 70% bright blue, 30% deeper blue
+      const saturation = 80 + Math.random() * 20
+      const lightness = 65 + Math.random() * 15
+      this.color = `hsla(${hue}, ${saturation}%, ${lightness}%, 0.8)`
+
+      this.alpha = Math.random() * 0.5 + 0.3
+    }
+
+    update(isHovering: boolean) {
+      // Orbital movement
+      this.angle += this.angleSpeed * (isHovering ? 2.5 : 1) // Faster movement on hover
+
+      // Increase orbit variation when hovering
+      const orbitVariation = isHovering
+        ? Math.sin(Date.now() * 0.001 + this.angle) * this.radius * 0.15
+        : Math.sin(Date.now() * 0.0005 + this.angle) * this.radius * 0.05
+
+      const targetX = this.centerX + Math.cos(this.angle) * (this.distanceFromCenter + orbitVariation)
+      const targetY = this.centerY + Math.sin(this.angle) * (this.distanceFromCenter + orbitVariation)
+
+      // Add some randomness to the movement
+      this.x += (targetX - this.x) * 0.1 + this.speedX
+      this.y += (targetY - this.y) * 0.1 + this.speedY
+
+      // Reset speed occasionally to prevent particles from drifting too far
+      this.speedX *= 0.99
+      this.speedY *= 0.99
+
+      // Pulsate size when hovering
+      if (isHovering) {
+        this.size = Math.max(0.5, this.size + Math.sin(Date.now() * 0.01) * 0.15)
+        this.alpha = Math.min(0.95, this.alpha + 0.01)
+      } else {
+        this.size = Math.max(0.5, Math.min(2, this.size * 0.98 + 0.5 * 0.02))
+        this.alpha = Math.max(0.3, Math.min(0.7, this.alpha * 0.95 + 0.5 * 0.05))
+      }
+    }
+
+    draw(ctx: CanvasRenderingContext2D) {
+      ctx.globalAlpha = this.alpha
+      ctx.fillStyle = this.color
+      ctx.beginPath()
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.globalAlpha = 1
+    }
+  }
+
   // Function to connect background particles with lines
   function connectParticles(particles: BackgroundParticle[], ctx: CanvasRenderingContext2D) {
     const maxDistance = 150
@@ -128,6 +210,41 @@ export default function OpeningScreen() {
         }
       }
     }
+  }
+
+  // Function to draw button glow effect
+  function drawButtonGlow(
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    isHovering: boolean,
+  ) {
+    const radius = Math.max(width, height) / 2
+    // Increase the glow radius when hovering for broader dispersion
+    const glowRadius = isHovering ? radius * 2.5 : radius * 1.8
+
+    const gradient = ctx.createRadialGradient(x, y, radius * 0.5, x, y, glowRadius)
+
+    if (isHovering) {
+      // More prominent blue hue with broader dispersion on hover
+      gradient.addColorStop(0, "rgba(56, 182, 255, 0.4)") // Bright blue core
+      gradient.addColorStop(0.4, "rgba(30, 144, 255, 0.25)") // Medium blue mid
+      gradient.addColorStop(0.7, "rgba(0, 128, 255, 0.1)") // Deeper blue outer
+      gradient.addColorStop(1, "rgba(0, 102, 255, 0)") // Fade to transparent
+    } else {
+      // Subtle blue glow when not hovering
+      gradient.addColorStop(0, "rgba(56, 182, 255, 0.2)") // Bright blue core
+      gradient.addColorStop(0.5, "rgba(30, 144, 255, 0.1)") // Medium blue mid
+      gradient.addColorStop(0.8, "rgba(0, 128, 255, 0.05)") // Deeper blue outer
+      gradient.addColorStop(1, "rgba(0, 102, 255, 0)") // Fade to transparent
+    }
+
+    ctx.fillStyle = gradient
+    ctx.beginPath()
+    ctx.arc(x, y, glowRadius, 0, Math.PI * 2)
+    ctx.fill()
   }
 
   useEffect(() => {
@@ -215,6 +332,35 @@ export default function OpeningScreen() {
       }
     }
 
+    // Initialize button particles
+    function initButtonParticles() {
+      if (!buttonRef.current) return
+
+      const buttonRect = buttonRef.current.getBoundingClientRect()
+      const centerX = buttonRect.left + buttonRect.width / 2
+      const centerY = buttonRect.top + buttonRect.height / 2
+      const radius = Math.max(buttonRect.width, buttonRect.height) / 2
+
+      buttonParticlesRef.current = []
+      const particleCount = 20
+
+      for (let i = 0; i < particleCount; i++) {
+        buttonParticlesRef.current.push(new ButtonParticle(centerX, centerY, radius * 1.5))
+      }
+    }
+
+    // Track if button is being hovered
+    let isButtonHovered = false
+
+    function updateButtonHoverState() {
+      if (!buttonRef.current) return false
+
+      const buttonRect = buttonRef.current.getBoundingClientRect()
+      const { x, y } = mousePositionRef.current
+
+      return x >= buttonRect.left && x <= buttonRect.right && y >= buttonRect.top && y <= buttonRect.bottom
+    }
+
     function animate() {
       if (!ctx || !canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -260,10 +406,29 @@ export default function OpeningScreen() {
         if (newParticle) particlesRef.current.push(newParticle)
       }
 
+      // Update button hover state
+      isButtonHovered = updateButtonHoverState()
+
+      // Draw button glow effect
+      if (buttonRef.current && !isEntering) {
+        const buttonRect = buttonRef.current.getBoundingClientRect()
+        const centerX = buttonRect.left + buttonRect.width / 2
+        const centerY = buttonRect.top + buttonRect.height / 2
+
+        drawButtonGlow(ctx, centerX, centerY, buttonRect.width, buttonRect.height, isButtonHovered)
+
+        // Update button particles
+        for (const particle of buttonParticlesRef.current) {
+          particle.update(isButtonHovered)
+          particle.draw(ctx)
+        }
+      }
+
       animationFrameRef.current = requestAnimationFrame(animate)
     }
 
     createInitialParticles()
+    setTimeout(initButtonParticles, 100) // Initialize button particles after button is rendered
     animate()
 
     const handleResize = () => {
@@ -277,6 +442,7 @@ export default function OpeningScreen() {
       }
 
       createInitialParticles()
+      initButtonParticles()
     }
 
     const handleMove = (x: number, y: number) => {
@@ -345,30 +511,24 @@ export default function OpeningScreen() {
         {/* No text content here - it's drawn on the canvas */}
         <div className="text-center">{/* Intentionally empty - text is rendered on canvas */}</div>
 
-        {/* Interactive Enter button at the bottom */}
+        {/* Integrated Enter button */}
         <div className="mb-16 mt-auto">
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.5 }}
-            onClick={handleEnter}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 px-10 py-4 text-lg font-medium text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25 ${
-              isEntering ? "pointer-events-none opacity-0" : ""
-            }`}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isEntering ? 0 : 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className={isEntering ? "pointer-events-none" : ""}
           >
-            <span className="relative z-10">Enter</span>
-            <span className="absolute inset-0 z-0 bg-gradient-to-r from-blue-600 to-violet-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
-
-            {/* Pulsing ring effect */}
-            <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-indigo-400 opacity-20"></span>
-
-            {/* Particle orbit effect */}
-            <span className="absolute left-0 top-0 -z-10 h-3 w-3 animate-orbit-1 rounded-full bg-indigo-300 opacity-70"></span>
-            <span className="absolute left-0 top-0 -z-10 h-2 w-2 animate-orbit-2 rounded-full bg-violet-300 opacity-70"></span>
-            <span className="absolute left-0 top-0 -z-10 h-2 w-2 animate-orbit-3 rounded-full bg-blue-300 opacity-70"></span>
-          </motion.button>
+            <button
+              ref={buttonRef}
+              onClick={handleEnter}
+              disabled={isEntering}
+              className="group relative overflow-hidden rounded-full border border-blue-500/30 bg-transparent px-8 py-3 text-lg font-medium text-white transition-all duration-300 hover:border-blue-400/70 hover:shadow-lg hover:shadow-blue-500/20 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 focus:ring-offset-black"
+            >
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-blue-100">Enter</span>
+              <span className="absolute inset-0 z-0 bg-gradient-to-r from-blue-900/10 to-cyan-900/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            </button>
+          </motion.div>
         </div>
       </div>
     </div>
