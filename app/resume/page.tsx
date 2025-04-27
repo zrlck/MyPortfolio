@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { useEffect } from "react"
 import Navbar from "../components/navbar"
 import Footer from "../components/footer"
 import { Button } from "@/components/ui/button"
@@ -9,6 +10,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, Download } from "lucide-react"
 
 export default function ResumePage() {
+  // Scroll to top when the page loads
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

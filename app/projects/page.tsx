@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
@@ -12,6 +12,11 @@ import { ArrowLeft, Github, Play } from "lucide-react"
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState("all")
+
+  // Scroll to top when the page loads
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const projects = [
     {

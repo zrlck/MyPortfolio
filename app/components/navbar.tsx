@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Menu, X, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
@@ -12,29 +12,52 @@ import { motion, AnimatePresence } from "framer-motion"
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [currentHash, setCurrentHash] = useState("")
   const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
 
+    // Set the current hash
+    setCurrentHash(window.location.hash)
+
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+
+    // Update hash when it changes
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash)
+    }
+
+    window.addEventListener("hashchange", handleHashChange)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("hashchange", handleHashChange)
+    }
   }, [])
 
   const navLinks = [
-    { href: "/home", label: "Home" },
-    { href: "/home#about", label: "About" },
-    { href: "/home#skills", label: "Skills" },
-    { href: "/home#projects", label: "Projects" },
-    { href: "/home#research", label: "Research" },
-    { href: "/home#certifications", label: "Certifications" },
-    { href: "/home#contact", label: "Contact" },
-    { href: "/resume", label: "Resume" },
+    { href: "/home", label: "Home", isPage: true },
+    { href: "/home#about", label: "About", isPage: false },
+    { href: "/home#skills", label: "Skills", isPage: false },
+    { href: "/home#projects", label: "Projects", isPage: false },
+    { href: "/home#research", label: "Research", isPage: false },
+    { href: "/home#certifications", label: "Certifications", isPage: false },
+    { href: "/home#contact", label: "Contact", isPage: false },
   ]
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isPage: boolean) => {
+    // If it's a page navigation (not a section), let the default link behavior work
+    if (isPage) {
+      // Just close the mobile menu if it's open
+      setIsOpen(false)
+      return
+    }
+
+    // Otherwise, handle section scrolling
     e.preventDefault()
 
     // If it's a section on the current page
@@ -46,9 +69,28 @@ export default function Navbar() {
         setIsOpen(false)
       }
     } else {
-      // If it's a different page
-      window.location.href = href
+      // If it's a section on another page
+      router.push(href)
+      setIsOpen(false)
     }
+  }
+
+  const handleResumeClick = (e: React.MouseEvent) => {
+    setIsOpen(false)
+    // No need to prevent default - let the Link component handle navigation
+  }
+
+  const isActive = (href: string) => {
+    if (pathname !== "/home" && !href.includes("#")) {
+      return pathname === href
+    }
+
+    if (pathname === "/home" && href.includes("#")) {
+      const hrefHash = `#${href.split("#")[1]}`
+      return currentHash === hrefHash
+    }
+
+    return pathname === href
   }
 
   return (
@@ -68,19 +110,16 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
+              onClick={(e) => handleNavigation(e, link.href, link.isPage)}
               className={`text-sm transition-colors hover:text-primary ${
-                pathname === link.href ||
-                (pathname === "/home" && link.href.includes("#") && window.location.hash === link.href.split("#")[1])
-                  ? "text-primary"
-                  : "text-muted-foreground"
+                isActive(link.href) ? "text-primary" : "text-muted-foreground"
               }`}
             >
               {link.label}
             </a>
           ))}
           <Button asChild size="sm" className="ml-4">
-            <Link href="/resume" className="flex items-center gap-2">
+            <Link href="/resume" onClick={handleResumeClick} className="flex items-center gap-2">
               <Download className="h-4 w-4" />
               Resume
             </Link>
@@ -109,27 +148,16 @@ export default function Navbar() {
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={(e) => scrollToSection(e, link.href)}
+                    onClick={(e) => handleNavigation(e, link.href, link.isPage)}
                     className={`py-2 text-sm transition-colors hover:text-primary ${
-                      pathname === link.href ||
-                      (
-                        pathname === "/home" &&
-                          link.href.includes("#") &&
-                          window.location.hash === link.href.split("#")[1]
-                      )
-                        ? "text-primary"
-                        : "text-muted-foreground"
+                      isActive(link.href) ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
                     {link.label}
                   </a>
                 ))}
                 <Button asChild size="sm" className="mt-2 w-full">
-                  <Link
-                    href="/resume"
-                    className="flex items-center justify-center gap-2"
-                    onClick={() => setIsOpen(false)}
-                  >
+                  <Link href="/resume" className="flex items-center justify-center gap-2" onClick={handleResumeClick}>
                     <Download className="h-4 w-4" />
                     Resume
                   </Link>

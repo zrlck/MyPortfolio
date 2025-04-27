@@ -12,8 +12,10 @@ import { ArrowLeft, CuboidIcon as Cube, Lightbulb, Wand2 } from "lucide-react"
 
 export default function FunPage() {
   const [isUnlocked, setIsUnlocked] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
     // Check if the page has been unlocked before
     const unlocked = localStorage.getItem("funPageUnlocked")
     if (unlocked === "true") {
@@ -23,7 +25,20 @@ export default function FunPage() {
 
   const handleUnlock = () => {
     setIsUnlocked(true)
-    localStorage.setItem("funPageUnlocked", "true")
+    if (typeof window !== "undefined") {
+      localStorage.setItem("funPageUnlocked", "true")
+    }
+  }
+
+  // Don't render anything with localStorage until client-side
+  if (!isMounted) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="mb-6 text-4xl font-bold">Loading...</h1>
+        </div>
+      </div>
+    )
   }
 
   if (!isUnlocked) {
@@ -119,7 +134,7 @@ export default function FunPage() {
               <CardContent className="space-y-4">
                 <div className="overflow-hidden rounded-md">
                   <Image
-                    src="/placeholder.svg?height=300&width=500&query=3D animation of quantum particles in Blender"
+                    src="/quantum-entanglement.png"
                     alt="3D Animation"
                     width={500}
                     height={300}
@@ -154,7 +169,7 @@ export default function FunPage() {
               <CardContent className="space-y-4">
                 <div className="overflow-hidden rounded-md">
                   <Image
-                    src="/placeholder.svg?height=300&width=500&query=custom built computer with RGB lighting"
+                    src="/rgb-gaming-rig.png"
                     alt="Custom PC Build"
                     width={500}
                     height={300}
