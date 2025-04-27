@@ -364,7 +364,10 @@ export default function OpeningScreen() {
     function animate() {
       if (!ctx || !canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      ctx.fillStyle = "rgba(10, 10, 20, 1)"
+
+      // Updated background color to match the main application's background color
+      // Using hsl(240, 10%, 3.9%) which is the --background variable from globals.css
+      ctx.fillStyle = "hsl(240, 10%, 3.9%)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       // Draw and update background particles (like in hero section)
@@ -502,7 +505,7 @@ export default function OpeningScreen() {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-between py-16">
         {/* Empty div for top spacing */}
