@@ -1,3 +1,6 @@
+"use client"
+
+import { motion } from "framer-motion"
 import Navbar from "../components/navbar"
 import Hero from "../components/hero"
 import About from "../components/about"
@@ -11,7 +14,12 @@ import Footer from "../components/footer"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <motion.div
+      className="min-h-screen bg-background"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
       <Navbar />
       <main>
         <Hero />
@@ -24,6 +32,6 @@ export default function HomePage() {
         <Contact />
       </main>
       <Footer />
-    </div>
+    </motion.div>
   )
 }

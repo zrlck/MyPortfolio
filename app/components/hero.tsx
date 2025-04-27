@@ -115,13 +115,18 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+    <motion.section
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
       <canvas ref={canvasRef} className="absolute inset-0 z-0" aria-hidden="true" />
       <div className="container relative z-10 mx-auto px-4 py-32 text-center md:py-48">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
         >
           <span className="block">Ricardo Gonzales</span>
@@ -132,7 +137,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground"
         >
           Building the future with code, circuits, and creativity.
@@ -140,7 +145,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Button size="lg" className="group" onClick={() => scrollToSection("projects")}>
@@ -158,7 +163,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.8,
-            delay: 0.8,
+            delay: 1.0,
             repeat: Number.POSITIVE_INFINITY,
             repeatType: "reverse",
           }}
@@ -183,6 +188,6 @@ export default function Hero() {
           </svg>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }

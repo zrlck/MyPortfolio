@@ -17,6 +17,7 @@ export default function OpeningScreen() {
   const backgroundParticlesRef = useRef<BackgroundParticle[]>([])
   const buttonParticlesRef = useRef<ButtonParticle[]>([])
   const buttonRef = useRef<HTMLButtonElement>(null)
+  const enterStartTimeRef = useRef<number>(0)
 
   // Particle class for text animation
   class Particle {
@@ -53,6 +54,16 @@ export default function OpeningScreen() {
     }
 
     update(mouseX: number, mouseY: number) {
+      if (isEntering) {
+        // During transition, particles should gracefully disperse
+        const disperseSpeed = 0.5 + Math.random() * 1.5
+        const angle = Math.random() * Math.PI * 2
+        this.x += Math.cos(angle) * disperseSpeed
+        this.y += Math.sin(angle) * disperseSpeed
+        this.size *= 0.97 // Gradually shrink
+        return
+      }
+
       const dx = mouseX - this.x
       const dy = mouseY - this.y
       const distance = Math.sqrt(dx * dx + dy * dy)
@@ -93,6 +104,13 @@ export default function OpeningScreen() {
     }
 
     update(canvas: HTMLCanvasElement) {
+      if (isEntering) {
+        // During transition, increase speed and add some randomness
+        this.speedX *= 1.03
+        this.speedY *= 1.03
+        this.size *= 0.98 // Gradually fade out by reducing size
+      }
+
       this.x += this.speedX
       this.y += this.speedY
 
@@ -151,6 +169,17 @@ export default function OpeningScreen() {
     }
 
     update(isHovering: boolean) {
+      if (isEntering) {
+        // During transition, particles should expand outward
+        const angle = Math.atan2(this.y - this.centerY, this.x - this.centerX)
+        const speed = 2 + Math.random() * 2
+        this.x += Math.cos(angle) * speed
+        this.y += Math.sin(angle) * speed
+        this.alpha *= 0.95 // Fade out
+        return
+      }
+
+      // Rest of the update method remains the same
       // Orbital movement
       this.angle += this.angleSpeed * (isHovering ? 2.5 : 1) // Faster movement on hover
 
@@ -370,6 +399,13 @@ export default function OpeningScreen() {
       ctx.fillStyle = "hsl(240, 10%, 3.9%)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
+      // Apply global opacity for smooth fade-out during transition
+      if (isEntering) {
+        const elapsedTime = Date.now() - enterStartTimeRef.current
+        const fadeOutProgress = Math.min(elapsedTime / 800, 1)
+        ctx.globalAlpha = 1 - fadeOutProgress
+      }
+
       // Draw and update background particles (like in hero section)
       for (const particle of backgroundParticlesRef.current) {
         particle.update(canvas)
@@ -404,9 +440,12 @@ export default function OpeningScreen() {
         baseParticleCount * Math.sqrt((canvas.width * canvas.height) / (1920 * 1080)),
       )
 
-      while (particlesRef.current.length < targetParticleCount) {
-        const newParticle = createParticle()
-        if (newParticle) particlesRef.current.push(newParticle)
+      // Only add new particles if we're not in the entering state
+      if (!isEntering) {
+        while (particlesRef.current.length < targetParticleCount) {
+          const newParticle = createParticle()
+          if (newParticle) particlesRef.current.push(newParticle)
+        }
       }
 
       // Update button hover state
@@ -426,6 +465,9 @@ export default function OpeningScreen() {
           particle.draw(ctx)
         }
       }
+
+      // Reset global alpha
+      ctx.globalAlpha = 1
 
       animationFrameRef.current = requestAnimationFrame(animate)
     }
@@ -497,15 +539,26 @@ export default function OpeningScreen() {
   }, [isMobile])
 
   const handleEnter = () => {
+    enterStartTimeRef.current = Date.now()
     setIsEntering(true)
+
+    // Rest of the function remains the same
     setTimeout(() => {
       setIsComplete(true)
-      router.push("/home")
-    }, 1000)
+
+      setTimeout(() => {
+        router.push("/home")
+      }, 300)
+    }, 800)
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: isComplete ? 0 : 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-between py-16">
         {/* Empty div for top spacing */}
@@ -534,6 +587,6 @@ export default function OpeningScreen() {
           </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
