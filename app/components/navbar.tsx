@@ -45,6 +45,7 @@ export default function Navbar() {
     { href: "/home#skills", label: "Skills", isPage: false },
     { href: "/home#projects", label: "Projects", isPage: false },
     { href: "/home#research", label: "Research", isPage: false },
+    { href: "/home#awards", label: "Awards", isPage: false },
     { href: "/home#certifications", label: "Certifications", isPage: false },
     { href: "/home#contact", label: "Contact", isPage: false },
   ]

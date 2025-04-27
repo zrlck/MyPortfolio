@@ -5,6 +5,7 @@ import Skills from "../components/skills"
 import Projects from "../components/projects"
 import Research from "../components/research"
 import Certifications from "../components/certifications"
+import Awards from "../components/awards"
 import Contact from "../components/contact"
 import Footer from "../components/footer"
 
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Skills />
         <Projects />
         <Research />
+        <Awards />
         <Certifications />
         <Contact />
       </main>
