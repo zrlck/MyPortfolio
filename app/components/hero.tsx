@@ -131,7 +131,7 @@ export default function Hero() {
         >
           <span className="block">Ricardo Gonzales</span>
           <span className="mt-2 block text-2xl font-medium text-muted-foreground sm:text-3xl md:text-4xl">
-            Aspiring Computer Engineer | Quantum Photonics Researcher
+            Aspiring Computer Engineer | Quantum Photonics Enthusiast
           </span>
         </motion.h1>
         <motion.p
@@ -140,7 +140,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground"
         >
-          Building the future with code, circuits, and creativity.
+          (805) 218-0998 | zricksaii@gmail.com | Davis, CA
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

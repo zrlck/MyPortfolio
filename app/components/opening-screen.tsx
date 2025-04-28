@@ -399,7 +399,7 @@ export default function OpeningScreen() {
       // Draw subtitle with larger font
       const subtitleFontSize = isMobile ? 18 : 28 // Increased font size
       ctx.font = `${subtitleFontSize}px sans-serif`
-      ctx.fillText("Computer Engineer | Quantum Photonics Researcher", centerX, centerY + 30) // Adjusted position
+      ctx.fillText("Computer Engineer | Quantum Photonics Enthusiastic", centerX, centerY + 30) // Adjusted position
 
       ctx.restore()
 
