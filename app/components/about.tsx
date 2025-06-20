@@ -39,22 +39,22 @@ export default function About() {
             <h3 className="mb-4 text-2xl font-bold">My Journey</h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                My path in engineering began at Oxnard College and led me to UC Davis, where I've developed a passion
-                for the intersection of hardware design, quantum technology, and creative problem-solving.
+                Hey! I am Ricardo — a passionate UC Davis computer engineering student with a strong foundation in
+                quantum photonics, machine learning, hardware design, and creative problem solving skills!
               </p>
               <p>
-                As a researcher in quantum photonics at UCSB, I've worked on cutting-edge projects involving single
-                photon emitter exfoliation and photoluminescence analysis, pushing the boundaries of what's possible in
-                quantum computing.
+                Right now, I am doing research at Boston University using machine learning to analyze NEMS resonators
+                and how they behave in nonlinear dynamic systems. I am also working on a project at UC Davis that uses
+                computer vision to track how soil grains move during earthquakes. A mix of everything I love!
               </p>
               <p>
-                My multicultural background has shaped my approach to engineering and education. Through my roles in
-                EOP, TRIO SSS, and as SHPE President, I've been committed to making STEM accessible to all, providing
-                bilingual tutoring in English and Spanish.
+                Before this, I interned at UCSB as a quantum photonics researcher — working with single-photon emitters
+                and doing photoluminiscence analysis. Along the way, I stayed involved in the community through leadership
+                roles in EOP, TRIO SSS, and SHPE
               </p>
               <p>
-                I believe in building technology that bridges theoretical concepts with practical applications, creating
-                solutions that are both innovative and accessible.
+                I loved building tech that connects theory to the real world, and I am always looking for new opportunities
+                to learn and grow.
               </p>
             </div>
           </motion.div>

@@ -23,6 +23,8 @@ export default function Skills() {
     { name: "Git", icon: <GitBranch className="h-4 w-4" /> },
     { name: "MATLAB", icon: <Database className="h-4 w-4" /> },
     { name: "Arduino", icon: <Cpu className="h-4 w-4" /> },
+    { name: "TypeScript", icon: <Code className="h-4 w-4" /> },
+    { name: "HTML", icon: <Lightbulb className="h-4 w-4" /> },
   ]
 
   const softwareSkills = [
@@ -31,6 +33,10 @@ export default function Skills() {
     { name: "OrCAD", icon: <Monitor className="h-4 w-4" /> },
     { name: "PSpice", icon: <Lightbulb className="h-4 w-4" /> },
     { name: "KLayout", icon: <Ruler className="h-4 w-4" /> },
+    { name: "Quartus Prime", icon: <Cpu className="h-4 w-4" /> },
+    { name: "Machine Learning", icon: <Ruler className="h-4 w-4" /> },
+    { name: "Computer Vision", icon: <Monitor className="h-4 w-4" /> },
+    { name: "Image Processing", icon: <Lightbulb className="h-4 w-4" /> },
   ]
 
   const hardwareSkills = [
@@ -40,6 +46,8 @@ export default function Skills() {
     "Computer building",
     "Circuit design",
     "Photoluminescence spectroscopy",
+    "PCB layout",
+    "FPGA programming",
   ]
 
   const container = {
@@ -80,7 +88,7 @@ export default function Skills() {
             viewport={{ once: true }}
             className="rounded-lg border bg-card p-6 shadow-sm"
           >
-            <h3 className="mb-4 text-xl font-bold">Programming</h3>
+            <h3 className="mb-4 text-xl font-bold">Programming & Languages</h3>
             <div className="flex flex-wrap gap-2">
               {programmingSkills.map((skill) => (
                 <motion.span key={skill.name} variants={item} className="skill-badge">
@@ -98,7 +106,7 @@ export default function Skills() {
             viewport={{ once: true }}
             className="rounded-lg border bg-card p-6 shadow-sm"
           >
-            <h3 className="mb-4 text-xl font-bold">Software</h3>
+            <h3 className="mb-4 text-xl font-bold">Software & AI</h3>
             <div className="flex flex-wrap gap-2">
               {softwareSkills.map((skill) => (
                 <motion.span key={skill.name} variants={item} className="skill-badge">
