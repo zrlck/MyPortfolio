@@ -49,7 +49,7 @@ export default function Projects() {
           className="mb-12 text-center"
         >
           <h2 className="section-heading mx-auto">Featured Projects</h2>
-          <p className="mt-4 text-muted-foreground">Showcasing my work in quantum photonics and engineering</p>
+          <p className="mt-4 text-muted-foreground">Showcasing my work in quantum photonics, computer engineering, and machine learning</p>
         </motion.div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

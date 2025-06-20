@@ -25,6 +25,8 @@ export default function Skills() {
     { name: "Arduino", icon: <Cpu className="h-4 w-4" /> },
     { name: "TypeScript", icon: <Code className="h-4 w-4" /> },
     { name: "HTML", icon: <Lightbulb className="h-4 w-4" /> },
+    { name: "Node.js", icon: <Code className="h-4 w-4" /> },
+    { name: "Verilog", icon: <Code className="h-4 w-4" /> },
   ]
 
   const softwareSkills = [
