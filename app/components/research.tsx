@@ -15,8 +15,8 @@ export default function Research() {
           viewport={{ once: true }}
           className="mb-12 text-center"
         >
-          <h2 className="section-heading mx-auto">Research</h2>
-          <p className="mt-4 text-muted-foreground">Exploring the frontiers of quantum photonics</p>
+          <h2 className="section-heading mx-auto">Research Lab Experiences</h2>
+          <p className="mt-4 text-muted-foreground">Explore about my work on the photonics industry</p>
         </motion.div>
 
         <div className="grid gap-8 md:grid-cols-2">
@@ -36,6 +36,7 @@ export default function Research() {
                 className="object-cover"
               />
             </div>
+          
           </motion.div>
 
           <motion.div
@@ -46,18 +47,21 @@ export default function Research() {
           >
             <Card className="card-hover h-full">
               <CardHeader>
-                <CardTitle>Quantum Photonic Devices Research at UCSB</CardTitle>
+                <CardTitle>Moody Lab - Quantum Photonics at UC Santa Barbara</CardTitle>
                 <CardDescription>
                   Investigating single photon emitters for quantum computing applications
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  My research at UCSB focuses on the development and characterization of quantum photonic devices,
+                  My research at UCSB focused on the development and characterization of quantum photonic devices,
                   specifically working with single photon emitters that are crucial for quantum computing and secure
                   communications.
                 </p>
-
+              <CardTitle>Ekinci Lab - NEMS Resonators at Boston University</CardTitle>
+              <CardDescription>
+              </CardDescription>
+                Investigating single photon emitters for quantum computing applications
                 <div className="space-y-2">
                   <h4 className="font-medium">Key Research Areas:</h4>
                   <ul className="list-inside list-disc space-y-1 text-muted-foreground">
@@ -85,3 +89,4 @@ export default function Research() {
     </section>
   )
 }
+

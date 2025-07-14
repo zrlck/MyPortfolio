@@ -48,7 +48,7 @@ export default function Projects() {
           viewport={{ once: true }}
           className="mb-12 text-center"
         >
-          <h2 className="section-heading mx-auto">Featured Projects</h2>
+          <h2 className="section-heading mx-auto">Featured Research Projects</h2>
           <p className="mt-4 text-muted-foreground">Showcasing my work in quantum photonics, computer engineering, and machine learning</p>
         </motion.div>
 
