@@ -34,7 +34,10 @@ export default function Research() {
                 {/* Text Content */}
                 <div className="md:col-span-3">
                   <CardHeader className="pb-4">
-                    <CardTitle className="text-xl md:text-2xl">Quantum Photonic Devices Research at UCSB</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl text-white">
+  Moody Lab - Quantum Photonics at <span className="text-blue-500">UC Santa Barbara</span>
+</CardTitle>
+                    
                     <CardDescription className="text-base">
                       Investigating single photon emitters for quantum computing applications
                     </CardDescription>
@@ -97,7 +100,7 @@ export default function Research() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                     {/* Floating research badge */}
                     <div className="absolute bottom-4 left-4 rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-primary-foreground backdrop-blur-sm">
-                      UCSB Lab
+                      Moody Lab, UCSB
                     </div>
                   </div>
                 </div>
@@ -126,8 +129,8 @@ export default function Research() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                     {/* Floating research badge */}
-                    <div className="absolute bottom-4 right-4 rounded-full bg-purple-500/90 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
-                      Materials Lab
+                    <div className="absolute bottom-4 right-4 rounded-full bg-red-500/90 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                      Ekinci Lab, BU
                     </div>
                   </div>
                 </div>
@@ -135,39 +138,41 @@ export default function Research() {
                 {/* Text Content - Right side */}
                 <div className="md:col-span-3 md:order-2">
                   <CardHeader className="pb-4">
-                    <CardTitle className="text-xl md:text-2xl">Advanced Materials Characterization Research</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl text-white">
+  Ekinci Lab - Machine Learning Photonics at <span className="text-red-500">Boston University</span>
+</CardTitle>
                     <CardDescription className="text-base">
-                      Developing novel techniques for quantum material analysis and optimization
+                      Creating a machine learning model to analyze nonlinear dynamics in NEMS resonators
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground">
-                      This research focuses on developing advanced characterization techniques for quantum materials,
-                      with emphasis on understanding their optical and electronic properties for next-generation quantum
-                      devices and applications.
+                      This research focuses on applying machine learning techniques to understand the behavior of
+                      nanoelectromechanical systems (NEMS) resonators, particularly in nonlinear dynamic regimes.
+                      This work aims to enhance the performance and reliability of NEMS devices in photonics applications.
                     </p>
 
                     <div className="space-y-3">
                       <h4 className="font-semibold text-foreground">Key Research Areas:</h4>
                       <ul className="grid gap-2 text-sm text-muted-foreground md:grid-cols-1">
                         <li className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-500"></span>
-                          <span>Spectroscopic analysis of 2D materials</span>
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500"></span>
+                          <span>Machine Learning Algortihms of NEMS Resonators</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-500"></span>
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500"></span>
                           <span>Optical bench design and optimization</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-500"></span>
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500"></span>
                           <span>Temperature-dependent photoluminescence studies</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-500"></span>
-                          <span>Defect characterization in quantum materials</span>
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500"></span>
+                          <span>Data analysis and AI integration</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-500"></span>
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500"></span>
                           <span>Development of automated measurement systems</span>
                         </li>
                       </ul>
@@ -176,9 +181,10 @@ export default function Research() {
                     <div className="space-y-3">
                       <h4 className="font-semibold text-foreground">Research Impact:</h4>
                       <p className="text-sm text-muted-foreground">
-                        The techniques developed in this research enable better understanding and control of quantum
-                        materials, leading to improved performance in quantum sensing, computing, and communication
-                        applications. This work bridges fundamental materials science with practical device engineering.
+                        The techniques developed in this research can lead to significant advancements in the
+                        understanding and application of NEMS resonators in photonics, enabling more efficient and
+                        reliable devices for future technologies. The integration of machine learning with experimental
+                        techniques represents a novel approach to studying complex dynamic systems.
                       </p>
                     </div>
                   </CardContent>
