@@ -10,29 +10,29 @@ import { ExternalLink, Github, Play } from "lucide-react"
 export default function Projects() {
   const projects = [
     {
-      title: "Photoluminescence Spectroscopy Setup",
+      title: "Photoluminescence Spectroscopy Setup for Quantum 2D Materials",
       description:
         "Designed and built a custom photoluminescence spectroscopy setup for analyzing quantum photonic materials, enabling precise measurement of single photon emitters.",
       image: "/photoluminescence-setup.png",
-      tags: ["Optics", "Hardware", "Quantum"],
+      tags: ["Optics", "Hardware", "Quantum", "2D Materials", "Photonics", "Spectroscopy", "Lasers" ],
       demoUrl: "#",
       codeUrl: "#",
     },
     {
-      title: "Quantum Photonics Simulation",
+      title: "Machine Learning for Discovering Governing Equations of NEMS Resonators",
       description:
         "Developed a simulation of photonic chip design with light entanglement visualization, helping researchers understand quantum behavior in photonic circuits.",
       image: "/entangled-paths.png",
-      tags: ["Simulation", "Machine Learning", "Visualization"],
+      tags: ["Simulation", "Machine Learning", "Visualization", "NEMS Resonators", "Photonics", "Python"],
       demoUrl: "#",
       codeUrl: "#",
     },
     {
-      title: "STEM Education Platform",
+      title: "Image Processing for Soil Grain Movement Tracking",
       description:
         "Created an interactive platform for bilingual STEM education, featuring hardware demonstrations and circuit simulations to make engineering concepts accessible.",
       image: "/interactive-circuit-learning.png",
-      tags: ["Education", "Bilingual", "Interactive"],
+      tags: ["Image Processing", "Python", "Machine Learning", "Soil Mechanics", "Algortihms", "Computer Vision"],
       demoUrl: "#",
       codeUrl: "#",
     },
