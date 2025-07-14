@@ -21,7 +21,7 @@ export default function Projects() {
     {
       title: "Machine Learning for Discovering Governing Equations of NEMS Resonators",
       description:
-        "Developed a simulation of photonic chip design with light entanglement visualization, helping researchers understand quantum behavior in photonic circuits.",
+        "Developed a machine learning model to analyze nonlinear dynamics in NEMS resonators, providing insights into their behavior and potential applications of NEMS resonators in photonics and filters.",
       image: "/entangled-paths.png",
       tags: ["Simulation", "Machine Learning", "Visualization", "NEMS Resonators", "Photonics", "Python"],
       demoUrl: "#",
@@ -30,7 +30,7 @@ export default function Projects() {
     {
       title: "Image Processing for Soil Grain Movement Tracking",
       description:
-        "Created an interactive platform for bilingual STEM education, featuring hardware demonstrations and circuit simulations to make engineering concepts accessible.",
+        "Created a computer vision algorithm to track soil grain movement during earthquakes, enhancing understanding of soil mechanics and earthquake engineering.",
       image: "/interactive-circuit-learning.png",
       tags: ["Image Processing", "Python", "Machine Learning", "Soil Mechanics", "Algortihm", "Computer Vision "],
       demoUrl: "#",
