@@ -23,7 +23,7 @@ export default function Projects() {
       description:
         "Developed a simulation of photonic chip design with light entanglement visualization, helping researchers understand quantum behavior in photonic circuits.",
       image: "/entangled-paths.png",
-      tags: ["Simulation", "Quantum", "Visualization"],
+      tags: ["Simulation", "Machine Learning", "Visualization"],
       demoUrl: "#",
       codeUrl: "#",
     },
