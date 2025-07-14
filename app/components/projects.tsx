@@ -32,7 +32,7 @@ export default function Projects() {
       description:
         "Created an interactive platform for bilingual STEM education, featuring hardware demonstrations and circuit simulations to make engineering concepts accessible.",
       image: "/interactive-circuit-learning.png",
-      tags: ["Image Processing", "Python", "Machine Learning", "Soil Mechanics", "Algortihms", "Computer Vision"],
+      tags: ["Image Processing", "Python", "Machine Learning", "Soil Mechanics", "Algortihm", "Computer Vision "],
       demoUrl: "#",
       codeUrl: "#",
     },
