@@ -14,7 +14,9 @@ export default function Projects() {
       description:
         "Designed and built a custom photoluminescence spectroscopy setup for analyzing quantum photonic materials, enabling precise measurement of single photon emitters.",
       image: "/photoluminescence-setup.png",
-      tags: ["Optics", "Hardware", "Quantum", "2D Materials", "Photonics", "Spectroscopy", "Lasers" ],
+      tags: ["Optics", "Hardware", "Quantum", "2D Materials", "Photonics", "Spectroscopy", "Lasers"],
+      lab: "UC Santa Barbara",
+      labColor: "blue",
       demoUrl: "#",
       codeUrl: "#",
     },
@@ -24,6 +26,8 @@ export default function Projects() {
         "Developed a machine learning model to analyze nonlinear dynamics in NEMS resonators, providing insights into their behavior and potential applications of NEMS resonators in photonics and filters.",
       image: "/entangled-paths.png",
       tags: ["Simulation", "Machine Learning", "Visualization", "NEMS Resonators", "Photonics", "Python"],
+      lab: "Boston University",
+      labColor: "red",
       demoUrl: "#",
       codeUrl: "#",
     },
@@ -32,7 +36,9 @@ export default function Projects() {
       description:
         "Created a computer vision algorithm to track soil grain movement during earthquakes, enhancing understanding of soil mechanics and earthquake engineering.",
       image: "/interactive-circuit-learning.png",
-      tags: ["Image Processing", "Python", "Machine Learning", "Soil Mechanics", "Algorithms", "Computer Vision "],
+      tags: ["Image Processing", "Python", "Machine Learning", "Soil Mechanics", "Algorithms", "Computer Vision"],
+      lab: "UC Davis",
+      labColor: "yellow",
       demoUrl: "#",
       codeUrl: "#",
     },
@@ -49,7 +55,9 @@ export default function Projects() {
           className="mb-12 text-center"
         >
           <h2 className="section-heading mx-auto">Featured Research Projects</h2>
-          <p className="mt-4 text-muted-foreground">Showcasing my work in quantum photonics, computer engineering, and machine learning</p>
+          <p className="mt-4 text-muted-foreground">
+            Showcasing my work in quantum photonics, computer engineering, and machine learning
+          </p>
         </motion.div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -69,18 +77,45 @@ export default function Projects() {
                     fill
                     className="object-cover transition-transform duration-500 hover:scale-105"
                   />
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+
+                  {/* Integrated Lab Label */}
+                  <div className="absolute bottom-3 right-3">
+                    <div
+                      className={`rounded-full px-3 py-1 text-xs font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 ${
+                        project.labColor === "blue"
+                          ? "bg-primary/90 shadow-lg shadow-primary/20 hover:bg-primary hover:shadow-primary/30"
+                          : project.labColor === "red"
+                          ? "bg-red-500/90 shadow-lg shadow-red-500/20 hover:bg-red-500 hover:shadow-red-500/30"
+                          : project.labColor === "yellow"
+                          ? "bg-yellow-400/90 shadow-lg shadow-yellow-400/20 hover:bg-yellow-400 hover:shadow-yellow-400/30"
+                          : "bg-purple-500/90 shadow-lg shadow-purple-500/20 hover:bg-purple-500 hover:shadow-purple-500/30"
+                      }`}
+                    >
+                      {project.lab}
+                    </div>
+                  </div>
                 </div>
                 <CardHeader>
                   <CardTitle>{project.title}</CardTitle>
                   <div className="flex flex-wrap gap-2 pt-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className={`rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors ${
+                      project.labColor === "blue"
+                        ? "bg-primary/10 text-primary hover:bg-primary/20"
+                        : project.labColor === "red"
+                        ? "bg-red-500/10 text-red-500 hover:bg-red-500/20"
+                        : project.labColor === "yellow"
+                        ? "bg-yellow-400/10 text-yellow-600 hover:bg-yellow-400/20"
+                        : "bg-purple-500/10 text-purple-400 hover:bg-purple-500/20"
+                    }`}
+                  >
+                    {tag}
+                  </span>
+                ))}
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -117,3 +152,4 @@ export default function Projects() {
     </section>
   )
 }
+
