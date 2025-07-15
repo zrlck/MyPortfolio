@@ -69,7 +69,17 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="card-hover h-full overflow-hidden">
+              <Card
+                className={`h-full overflow-hidden transition-all duration-300 ${
+                  project.labColor === "blue"
+                    ? "hover:shadow-lg hover:shadow-primary/10 hover:border-primary/50"
+                    : project.labColor === "red"
+                      ? "hover:shadow-lg hover:shadow-red-500/10 hover:border-red-500/50"
+                      : project.labColor === "yellow"
+                        ? "hover:shadow-lg hover:shadow-yellow-400/10 hover:border-yellow-400/50"
+                        : "hover:shadow-lg hover:shadow-purple-500/10 hover:border-purple-500/50"
+                }`}
+              >
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image
                     src={project.image || "/placeholder.svg"}
@@ -79,7 +89,6 @@ export default function Projects() {
                   />
                   {/* Subtle gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-
                   {/* Integrated Lab Label */}
                   <div className="absolute bottom-3 right-3">
                     <div
@@ -87,10 +96,10 @@ export default function Projects() {
                         project.labColor === "blue"
                           ? "bg-primary/90 shadow-lg shadow-primary/20 hover:bg-primary hover:shadow-primary/30"
                           : project.labColor === "red"
-                          ? "bg-red-500/90 shadow-lg shadow-red-500/20 hover:bg-red-500 hover:shadow-red-500/30"
-                          : project.labColor === "yellow"
-                          ? "bg-yellow-400/90 shadow-lg shadow-yellow-400/20 hover:bg-yellow-400 hover:shadow-yellow-400/30"
-                          : "bg-purple-500/90 shadow-lg shadow-purple-500/20 hover:bg-purple-500 hover:shadow-purple-500/30"
+                            ? "bg-red-500/90 shadow-lg shadow-red-500/20 hover:bg-red-500 hover:shadow-red-500/30"
+                            : project.labColor === "yellow"
+                              ? "bg-yellow-400/90 shadow-lg shadow-yellow-400/20 hover:bg-yellow-400 hover:shadow-yellow-400/30"
+                              : "bg-purple-500/90 shadow-lg shadow-purple-500/20 hover:bg-purple-500 hover:shadow-purple-500/30"
                       }`}
                     >
                       {project.lab}
@@ -100,22 +109,22 @@ export default function Projects() {
                 <CardHeader>
                   <CardTitle>{project.title}</CardTitle>
                   <div className="flex flex-wrap gap-2 pt-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={`rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors ${
-                      project.labColor === "blue"
-                        ? "bg-primary/10 text-primary hover:bg-primary/20"
-                        : project.labColor === "red"
-                        ? "bg-red-500/10 text-red-500 hover:bg-red-500/20"
-                        : project.labColor === "yellow"
-                        ? "bg-yellow-400/10 text-yellow-600 hover:bg-yellow-400/20"
-                        : "bg-purple-500/10 text-purple-400 hover:bg-purple-500/20"
-                    }`}
-                  >
-                    {tag}
-                  </span>
-                ))}
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className={`rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors ${
+                          project.labColor === "blue"
+                            ? "bg-primary/10 text-primary hover:bg-primary/20"
+                            : project.labColor === "red"
+                              ? "bg-red-500/10 text-red-500 hover:bg-red-500/20"
+                              : project.labColor === "yellow"
+                                ? "bg-yellow-400/10 text-yellow-600 hover:bg-yellow-400/20"
+                                : "bg-purple-500/10 text-purple-400 hover:bg-purple-500/20"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -152,4 +161,3 @@ export default function Projects() {
     </section>
   )
 }
-

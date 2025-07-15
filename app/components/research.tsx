@@ -29,15 +29,14 @@ export default function Research() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card className="card-hover overflow-hidden">
+            <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:border-primary/50">
               <div className="grid gap-0 md:grid-cols-5">
                 {/* Text Content */}
                 <div className="md:col-span-3">
                   <CardHeader className="pb-4">
                     <CardTitle className="text-xl md:text-2xl text-white">
-  Moody Lab - Quantum Photonics at <span className="text-blue-500">UC Santa Barbara</span>
-</CardTitle>
-                    
+                      Moody Lab - Quantum Photonics at <span className="text-blue-500">UC Santa Barbara</span>
+                    </CardTitle>
                     <CardDescription className="text-base">
                       Investigating single photon emitters for quantum computing applications
                     </CardDescription>
@@ -115,11 +114,11 @@ export default function Research() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="card-hover overflow-hidden">
+            <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 hover:border-red-500/50">
               <div className="grid gap-0 md:grid-cols-5">
                 {/* Integrated Image - Left side for variety */}
                 <div className="relative md:col-span-2 md:order-1">
-                  <div className="absolute inset-0 bg-gradient-to-bl from-purple-500/10 to-blue-500/20"></div>
+                  <div className="absolute inset-0 bg-gradient-to-bl from-red-500/10 to-orange-500/20"></div>
                   <div className="relative h-64 w-full overflow-hidden md:h-full">
                     <Image
                       src="/photoluminescence-setup.png"
@@ -139,8 +138,8 @@ export default function Research() {
                 <div className="md:col-span-3 md:order-2">
                   <CardHeader className="pb-4">
                     <CardTitle className="text-xl md:text-2xl text-white">
-  Ekinci Lab - Machine Learning Photonics at <span className="text-red-500">Boston University</span>
-</CardTitle>
+                      Ekinci Lab - Machine Learning Photonics at <span className="text-red-500">Boston University</span>
+                    </CardTitle>
                     <CardDescription className="text-base">
                       Creating a machine learning model to analyze nonlinear dynamics in NEMS resonators
                     </CardDescription>
@@ -148,8 +147,8 @@ export default function Research() {
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground">
                       This research focuses on applying machine learning techniques to understand the behavior of
-                      nanoelectromechanical systems (NEMS) resonators, particularly in nonlinear dynamic systems.
-                      This work aims to enhance the performance and reliability of NEMS devices in photonics applications.
+                      nanoelectromechanical systems (NEMS) resonators, particularly in nonlinear dynamic systems. This
+                      work aims to enhance the performance and reliability of NEMS devices in photonics applications.
                     </p>
 
                     <div className="space-y-3">
