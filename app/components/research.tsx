@@ -157,7 +157,7 @@ export default function Research() {
                       <ul className="grid gap-2 text-sm text-muted-foreground md:grid-cols-1">
                         <li className="flex items-start gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500"></span>
-                          <span>Machine Learning Algortihms of NEMS Resonators</span>
+                          <span>Machine Learning Algorithms of NEMS Resonators</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500"></span>

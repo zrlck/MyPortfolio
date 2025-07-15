@@ -32,7 +32,7 @@ export default function Projects() {
       description:
         "Created a computer vision algorithm to track soil grain movement during earthquakes, enhancing understanding of soil mechanics and earthquake engineering.",
       image: "/interactive-circuit-learning.png",
-      tags: ["Image Processing", "Python", "Machine Learning", "Soil Mechanics", "Algortihm", "Computer Vision "],
+      tags: ["Image Processing", "Python", "Machine Learning", "Soil Mechanics", "Algorithms", "Computer Vision "],
       demoUrl: "#",
       codeUrl: "#",
     },
