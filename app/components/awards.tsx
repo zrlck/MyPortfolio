@@ -7,26 +7,26 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 export default function Awards() {
   const awards = [
     {
-      title: "Northrop Grumman Scholarship",
+      title: "SHPE Northrop Grumman Scholarship",
       organization: "Northrop Grumman Foundation",
-      year: "2023",
+      year: "2024",
       description:
-        "Awarded for outstanding academic achievement in engineering and commitment to innovation in aerospace technology.",
+        "Awarded for outstanding academic achievement in engineering and commitment to innovation in  computer engineering.",
       icon: <Trophy className="h-8 w-8 text-primary" />,
     },
     {
-      title: "Outstanding Research Award",
-      organization: "UC Davis Department of Engineering",
-      year: "2022",
-      description: "Recognized for exceptional contributions to quantum photonics research and experimental design.",
+      title: "Outstanding STEM Tutor Award",
+      organization: "Oxnard College",
+      year: "2023",
+      description: "Recognized for exceptional tutoring in STEM subjects, enhancing student learning and engagement.",
       icon: <Star className="h-8 w-8 text-primary" />,
     },
     {
-      title: "First Place - Engineering Showcase",
-      organization: "California Engineering Consortium",
-      year: "2021",
+      title: "AvenueE 2024 Scholar",
+      organization: "UC Davis",
+      year: "2024",
       description:
-        "First place award for innovative circuit design demonstrating practical applications of quantum principles.",
+        "Awarded for completing the AvenueE program, which focuses on professional development and career readiness in engineering.",
       icon: <Medal className="h-8 w-8 text-primary" />,
     },
   ]
