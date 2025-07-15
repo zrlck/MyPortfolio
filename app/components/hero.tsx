@@ -22,7 +22,7 @@ export default function Hero() {
       {/* Background Video - Replace with your desired video */}
       <video className="absolute inset-0 h-full w-full object-cover z-0" autoPlay muted loop playsInline>
         {/* Place your background video here. Example: */}
-        <source src="/SAW6.mp4" type="video/mp4" />
+        <source src="/Mainvideo.mp4" type="video/mp4" />
         {/* You can add multiple source tags for different video formats (e.g., .webm, .ogg) for broader browser compatibility */}
       </video>
 

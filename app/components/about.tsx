@@ -5,8 +5,11 @@ import Image from "next/image"
 
 export default function About() {
   return (
-    <section id="about" className="py-20">
-      <div className="container mx-auto px-4">
+    <section id="about" className="relative py-20 bg-secondary/30">
+      {/* Overlay for the gradient: 100% black from top, solid for 20% of height, then fades to transparent */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black from-20% to-transparent"></div>
+
+      <div className="container relative z-10 mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,12 +52,12 @@ export default function About() {
               </p>
               <p>
                 Before this, I interned at UCSB as a quantum photonics researcher — working with single-photon emitters
-                and doing photoluminiscence analysis. Along the way, I stayed involved in the community through leadership
-                roles in EOP, TRIO SSS, and SHPE
+                and doing photoluminiscence analysis. Along the way, I stayed involved in the community through
+                leadership roles in EOP, TRIO SSS, and SHPE
               </p>
               <p>
-                I loved building tech that connects theory to the real world, and I am always looking for new opportunities
-                to learn and grow.
+                I loved building tech that connects theory to the real world, and I am always looking for new
+                opportunities to learn and grow.
               </p>
             </div>
           </motion.div>
