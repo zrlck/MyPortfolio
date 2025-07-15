@@ -391,15 +391,15 @@ export default function OpeningScreen() {
       const centerY = canvas.height / 2
 
       // Draw title with larger font
-      const titleFontSize = isMobile ? 36 : 64 // Increased font size
+      const titleFontSize = isMobile ? 52 : 84 // Increased font size
       ctx.font = `bold ${titleFontSize}px sans-serif`
       ctx.textAlign = "center"
       ctx.fillText("Ricardo Gonzales", centerX, centerY - 30) // Adjusted position
 
       // Draw subtitle with larger font
-      const subtitleFontSize = isMobile ? 18 : 28 // Increased font size
+      const subtitleFontSize = isMobile ? 28 : 38 // Increased font size
       ctx.font = `${subtitleFontSize}px sans-serif`
-      ctx.fillText("Computer Engineer | Quantum Photonics Enthusiastic", centerX, centerY + 30) // Adjusted position
+      ctx.fillText("Welcome to my portfolio!", centerX, centerY + 30) // Adjusted position
 
       ctx.restore()
 
