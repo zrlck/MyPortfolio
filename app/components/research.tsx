@@ -148,7 +148,7 @@ export default function Research() {
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground">
                       This research focuses on applying machine learning techniques to understand the behavior of
-                      nanoelectromechanical systems (NEMS) resonators, particularly in nonlinear dynamic regimes.
+                      nanoelectromechanical systems (NEMS) resonators, particularly in nonlinear dynamic systems.
                       This work aims to enhance the performance and reliability of NEMS devices in photonics applications.
                     </p>
 

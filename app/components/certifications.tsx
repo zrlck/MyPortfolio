@@ -21,9 +21,9 @@ export default function Certifications() {
       icon: <Building className="h-8 w-8 text-primary" />,
     },
     {
-      title: "Northrop Grumman Scholarship",
-      level: "Academic Excellence",
-      issuer: "Northrop Grumman Foundation",
+      title: "Altium Designer Certification",
+      level: "Circuit Design, PCB Layout",
+      issuer: "Altium Company",
       year: "2023",
       icon: <Award className="h-8 w-8 text-primary" />,
     },

@@ -10,13 +10,13 @@ export default function Footer() {
             <Link href="/home" className="text-xl font-bold">
               <span className="gradient-text">RG</span>
             </Link>
-            <p className="text-sm text-muted-foreground">Building the future with code, circuits, and creativity.</p>
+            <p className="text-sm text-muted-foreground">Personal portfolio</p>
           </div>
 
           <div className="flex flex-col items-center gap-2 md:items-end">
             <div className="flex space-x-4">
               <Link
-                href="https://github.com"
+                href="https://github.com/zrlck"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground transition-colors hover:text-primary"
@@ -25,7 +25,7 @@ export default function Footer() {
                 <span className="sr-only">GitHub</span>
               </Link>
               <Link
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/ricard%C3%B8/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground transition-colors hover:text-primary"
@@ -34,7 +34,7 @@ export default function Footer() {
                 <span className="sr-only">LinkedIn</span>
               </Link>
               <Link
-                href="mailto:ricardo.gonzales@example.com"
+                href="mailto:rigonzales@ucdavis.edu"
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
                 <Mail className="h-5 w-5" />
