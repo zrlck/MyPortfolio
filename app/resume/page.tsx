@@ -43,13 +43,13 @@ export default function ResumePage() {
           className="mb-12 text-center"
         >
           <h1 className="text-4xl font-bold tracking-tight">Ricardo Gonzales</h1>
-          <p className="mt-2 text-xl text-muted-foreground">Computer Engineer | Quantum Photonics Researcher</p>
+          <p className="mt-2 text-xl text-muted-foreground">Computer Engineer | Photonics Enthusiast</p>
           <div className="mt-4 flex justify-center space-x-4 text-sm text-muted-foreground">
-            <span>ricardo.gonzales@example.com</span>
+            <span>rigonzales@ucdavis.edu</span>
             <span>•</span>
-            <span>Santa Barbara, CA</span>
+            <span>(805) 218-0998 CA</span>
             <span>•</span>
-            <span>LinkedIn</span>
+            <span>Davis, CA</span>
           </div>
         </motion.div>
 
