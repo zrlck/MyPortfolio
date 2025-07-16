@@ -49,7 +49,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-6 max-w-2xl text-lg text-gray-300"
           >
-            (805) 218-0998 | zricksaii@gmail.com | Davis, CA
+            (805) 218-0998 | rigonzales@ucdavis.edu | Davis, CA
           </motion.p>
 
           <motion.div
