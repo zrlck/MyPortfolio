@@ -45,13 +45,13 @@ export default function ResumePage() {
           className="mb-12 text-center"
         >
           <h1 className="text-4xl font-bold tracking-tight">Ricardo Gonzales</h1>
-          <p className="mt-2 text-xl text-muted-foreground">Computer Engineer | Quantum Photonics Researcher</p>
+          <p className="mt-2 text-xl text-muted-foreground">Computer Engineer | Photonics Enthusiast</p>
           <div className="mt-4 flex justify-center space-x-4 text-sm text-muted-foreground">
-            <span>ricardo.gonzales@example.com</span>
+            <span>Davis, California</span>
             <span>•</span>
-            <span>Santa Barbara, CA</span>
+            <span>(805) 218-0998</span>
             <span>•</span>
-            <span>LinkedIn</span>
+            <span>zricksaii@gmail.com</span>
           </div>
         </motion.div>
 
@@ -70,12 +70,12 @@ export default function ResumePage() {
                 <div className="timeline-item">
                   <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
                     <h3 className="text-lg font-bold">University of California, Davis</h3>
-                    <span className="text-sm text-muted-foreground">2022 - Present</span>
+                    <span className="text-sm text-muted-foreground">2024 - Present</span>
                   </div>
                   <p className="text-primary">B.S. Computer Engineering</p>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Focusing on hardware design, quantum computing, and embedded systems. Active member of the Society
-                    of Hispanic Professional Engineers (SHPE).
+                    Focusing on hardware design, photonics, and embedded systems. Active member of the Society
+                    of Hispanic Professional Engineers (SHPE), TRIO SSS Member, and AvenueE Scholar.
                   </p>
                 </div>
 
@@ -84,10 +84,10 @@ export default function ResumePage() {
                     <h3 className="text-lg font-bold">Oxnard College</h3>
                     <span className="text-sm text-muted-foreground">2020 - 2022</span>
                   </div>
-                  <p className="text-primary">A.S. Engineering</p>
+                  <p className="text-primary">A.S. Math & Physics</p>
                   <p className="mt-2 text-sm text-muted-foreground">
                     Completed foundational engineering coursework with honors. Served as a STEM tutor and participated
-                    in the TRIO Student Support Services program.
+                    in the TRIO Student Support Services program. Alumni of EOPS, OMEGA, and SHPE.
                   </p>
                 </div>
               </CardContent>
