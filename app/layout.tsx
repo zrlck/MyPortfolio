@@ -15,11 +15,13 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "Ricardo Gonzales Portfolio",
+  title: "Ricardo Gonzales | Computer Engineer & Quantum Photonics Researcher",
   description:
     "Portfolio of Ricardo Gonzales, a computer engineer specializing in quantum photonics research, hardware design, and STEM education.",
   keywords: ["Computer Engineer", "Quantum Photonics Research", "Engineering Portfolio", "Ricardo Gonzales"],
-    generator: 'v0.dev'
+  icons: {
+    icon: "/SAW24T.png", // Changed to your desired RG favicon path
+  },
 }
 
 export default function RootLayout({
