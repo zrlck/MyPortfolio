@@ -18,7 +18,8 @@ export default function Contact() {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState<string | null>(null)
+  const [isError, setIsError] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -28,18 +29,38 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitMessage(null)
+    setIsError(false)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      })
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormState({ name: "", email: "", message: "" })
+      const data = await response.json()
 
-    // Reset success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-    }, 5000)
+      if (response.ok) {
+        setSubmitMessage(data.message || "Message sent successfully! I'll get back to you soon.")
+        setFormState({ name: "", email: "", message: "" })
+        setIsError(false)
+      } else {
+        setSubmitMessage(data.message || "Failed to send message. Please try again later.")
+        setIsError(true)
+      }
+    } catch (error) {
+      console.error("Client-side error sending form:", error)
+      setSubmitMessage("An unexpected error occurred. Please try again.")
+      setIsError(true)
+    } finally {
+      setIsSubmitting(false)
+      setTimeout(() => {
+        setSubmitMessage(null)
+      }, 5000) // Clear message after 5 seconds
+    }
   }
 
   return (
@@ -76,7 +97,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm font-medium">Email</p>
-                      <p className="text-sm text-muted-foreground">rigonzales@ucdavis.edu</p>
+                      <p className="text-sm text-muted-foreground">
+                        {process.env.NEXT_PUBLIC_CONTACT_EMAIL || "rigonzales@ucdavis.edu"}
+                      </p>
                     </div>
                   </div>
 
@@ -92,8 +115,8 @@ export default function Contact() {
 
                   <div className="mt-6 rounded-lg bg-primary/5 p-4">
                     <p className="text-sm text-muted-foreground">
-                      I'm always open to discussing new projects, research opportunities, or potential collaborations
-                      in quantum photonics and computer engineering.
+                      I'm always open to discussing new projects, research opportunities, or potential collaborations in
+                      quantum photonics and computer engineering.
                     </p>
                   </div>
                 </CardContent>
@@ -195,9 +218,9 @@ export default function Contact() {
                         </span>
                       )}
                     </Button>
-                    {isSubmitted && (
-                      <p className="mt-2 text-center text-sm text-green-500">
-                        Message sent successfully! I'll get back to you soon.
+                    {submitMessage && (
+                      <p className={`mt-2 text-center text-sm ${isError ? "text-red-500" : "text-green-500"}`}>
+                        {submitMessage}
                       </p>
                     )}
                   </form>
