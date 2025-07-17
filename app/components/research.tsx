@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function Research() {
@@ -86,15 +85,17 @@ export default function Research() {
                   </CardContent>
                 </div>
 
-                {/* Integrated Image */}
+                {/* Integrated Video */}
                 <div className="relative md:col-span-2">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/20"></div>
                   <div className="relative h-64 w-full overflow-hidden md:h-full">
-                    <Image
-                      src="/quantum-optics-bench.png"
-                      alt="Quantum Photonics Research Setup"
-                      fill
-                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    <video
+                      src="/Research1.mp4" // Replace with your video path
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="object-cover h-full w-full"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                     {/* Floating research badge */}
@@ -116,15 +117,17 @@ export default function Research() {
           >
             <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 hover:border-red-500/50">
               <div className="grid gap-0 md:grid-cols-5">
-                {/* Integrated Image - Left side for variety */}
+                {/* Integrated Video - Left side for variety */}
                 <div className="relative md:col-span-2 md:order-1">
                   <div className="absolute inset-0 bg-gradient-to-bl from-red-500/10 to-orange-500/20"></div>
                   <div className="relative h-64 w-full overflow-hidden md:h-full">
-                    <Image
-                      src="/photoluminescence-setup.png"
-                      alt="Advanced Materials Characterization Setup"
-                      fill
-                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    <video
+                      src="/Research2.mp4" // Replace with your video path
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="object-cover h-full w-full"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                     {/* Floating research badge */}
