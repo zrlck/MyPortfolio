@@ -107,42 +107,60 @@ export default function ResumePage() {
               <CardContent className="space-y-6">
                 <div className="timeline-item">
                   <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                    <h3 className="text-lg font-bold">UCSB Quantum Photonics Lab</h3>
-                    <span className="text-sm text-muted-foreground">2023 - Present</span>
+                    <h3 className="text-lg font-bold">Boston University Photonics Center, Ekinci Lab</h3>
+                    <span className="text-sm text-muted-foreground">Summer 2025</span>
                   </div>
-                  <p className="text-primary">Research Assistant</p>
+                  <p className="text-primary">Photonics Research Intern</p>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Conducting research on single photon emitters for quantum computing applications. Developing and
-                    characterizing quantum photonic devices using KLayout simulation and photoluminescence spectroscopy.
+                    • Working on machine learning applications for analyzing NEMS resonators. Focused on nonlinear dynamic systems and data-driven modeling techniques. Used Python and PyTorch for data analysis and model development.
+                    <br />
+                    • Collaborating with a team of researchers to explore novel applications in photonics and AI integrations. Analyzing data from NEMS devices to improve performance and reliability as well as developing predictive models for system behavior.
+                  </p>
+                </div>
+
+                <div className="timeline-item">
+                  <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                    <h3 className="text-lg font-bold">UC Davis Center for Geotechnical Modeling, E-SEARCH </h3>
+                    <span className="text-sm text-muted-foreground">Spring & Summer 2025</span>
+                  </div>
+                  <p className="text-primary">Machine Learning Researcher</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    • Designing a PyTorch-based neural network to classify medical data from wearable sensors. Performed preprocessing,
+                    model training, and performance evaluation using precision-recall and ROC curves. Focused on algorithm
+                    interpretability for real-time patient monitoring applications.
+                    <br />
+                    • Working on soil grain movement analysis using computer vision techniques. Implementing OpenCV for image processing and feature extraction. Using Python for data analysis and visualization.
+
+                  </p>
+                </div>
+
+                <div className="timeline-item">
+                  <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                    <h3 className="text-lg font-bold">UC Santa Barbara Quantum Photonics Lab, Moody Lab</h3>
+                    <span className="text-sm text-muted-foreground">Summer 2024</span>
+                  </div>
+                  <p className="text-primary">Photonics Research Intern</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    • Collaborated on the design and testing of single photon emitters for quantum information systems. Utilized KLayout,
+                    Blender, and photoluminescence spectroscopy to model and analyze photonic chip behavior and entangled photon emission.
                   </p>
                 </div>
 
                 <div className="timeline-item">
                   <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
                     <h3 className="text-lg font-bold">Oxnard College STEM Center</h3>
-                    <span className="text-sm text-muted-foreground">2021 - 2022</span>
+                    <span className="text-sm text-muted-foreground">2022 - 2024</span>
                   </div>
-                  <p className="text-primary">STEM Tutor</p>
+                  <p className="text-primary">General STEM Tutor</p>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Provided bilingual tutoring in physics, mathematics, and computer science. Developed educational
-                    materials and workshops to support student success.
-                  </p>
-                </div>
-
-                <div className="timeline-item">
-                  <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                    <h3 className="text-lg font-bold">Camarillo Healthcare District</h3>
-                    <span className="text-sm text-muted-foreground">2020 - 2021</span>
-                  </div>
-                  <p className="text-primary">Caregiver</p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Provided compassionate care for patients with diverse needs. Developed technical solutions to
-                    improve patient monitoring and care delivery.
+                    • Provided bilingual tutoring in physics, mathematics, and computer science. Led group study sessions and developed
+                     accessible learning resources for underrepresented students in STEM.
                   </p>
                 </div>
               </CardContent>
             </Card>
           </motion.div>
+
 
           {/* Leadership Section */}
           <motion.div
@@ -158,24 +176,26 @@ export default function ResumePage() {
                 <div className="timeline-item">
                   <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
                     <h3 className="text-lg font-bold">Society of Hispanic Professional Engineers (SHPE)</h3>
-                    <span className="text-sm text-muted-foreground">2022 - 2023</span>
+                    <span className="text-sm text-muted-foreground">2023 - 2024</span>
                   </div>
                   <p className="text-primary">Chapter President</p>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Led chapter initiatives to promote STEM education and career development. Organized networking
+                    • Led chapter initiatives to promote STEM education and career development. Organized networking
                     events, workshops, and community outreach programs.
                   </p>
                 </div>
 
                 <div className="timeline-item">
                   <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                    <h3 className="text-lg font-bold">TRIO Student Support Services</h3>
-                    <span className="text-sm text-muted-foreground">2021 - 2022</span>
+                    <h3 className="text-lg font-bold">Oxnard College STEM Center</h3>
+                    <span className="text-sm text-muted-foreground">2022 - 2024</span>
                   </div>
-                  <p className="text-primary">Peer Mentor</p>
+                  <p className="text-primary">Mentor</p>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Mentored first-generation college students in navigating academic challenges. Developed and
+                    • Mentored first-generation college students in navigating academic challenges. Developed and
                     facilitated workshops on study skills and time management.
+                    <br />
+                    • Assisted in organizing events to promote STEM fields among underrepresented students.
                   </p>
                 </div>
               </CardContent>
@@ -207,6 +227,14 @@ export default function ResumePage() {
                     <span className="skill-badge">OrCAD</span>
                     <span className="skill-badge">PSpice</span>
                     <span className="skill-badge">KLayout</span>
+                    <span className="skill-badge">OpenCV</span>
+                    <span className="skill-badge">PyTorch</span> 
+                    <span className="skill-badge">TensorFlow</span>
+                    <span className="skill-badge">Quartus Prime</span>
+                    <span className="skill-badge">OrCAD</span>
+                    <span className="skill-badge">Multisim</span>
+                    <span className="skill-badge">PSpice</span>
+                    
                   </div>
                 </div>
 
@@ -219,6 +247,14 @@ export default function ResumePage() {
                     <span className="skill-badge">Computer building</span>
                     <span className="skill-badge">Circuit design</span>
                     <span className="skill-badge">Photoluminescence spectroscopy</span>
+                    <span className="skill-badge">NEMS Resonators</span>
+                    <span className="skill-badge">Photolithography</span>
+                    <span className="skill-badge">Quantum optics experiments</span>
+                    <span className="skill-badge">PCB design</span>
+                    <span className="skill-badge">FPGA</span>
+                    <span className="skill-badge">Microcontrollers</span>
+
+                    
                   </div>
                 </div>
 
@@ -227,6 +263,7 @@ export default function ResumePage() {
                   <div className="flex flex-wrap gap-2">
                     <span className="skill-badge">English (Native)</span>
                     <span className="skill-badge">Spanish (Native)</span>
+                    
                   </div>
                 </div>
               </CardContent>
@@ -246,17 +283,17 @@ export default function ResumePage() {
               <CardContent className="space-y-4">
                 <div className="timeline-item">
                   <h3 className="font-medium">International Tutor Training Program Certification (Level I & II)</h3>
-                  <p className="text-sm text-muted-foreground">College Reading & Learning Association, 2022</p>
+                  <p className="text-sm text-muted-foreground">College Reading & Learning Association, 2024</p>
                 </div>
 
                 <div className="timeline-item">
                   <h3 className="font-medium">American Caregiver Association Certification</h3>
-                  <p className="text-sm text-muted-foreground">American Caregiver Association, 2021</p>
+                  <p className="text-sm text-muted-foreground">American Caregiver Association, 2022</p>
                 </div>
 
                 <div className="timeline-item">
                   <h3 className="font-medium">Northrop Grumman Scholarship</h3>
-                  <p className="text-sm text-muted-foreground">Northrop Grumman Foundation, 2023</p>
+                  <p className="text-sm text-muted-foreground">Northrop Grumman Foundation, 2024</p>
                 </div>
               </CardContent>
             </Card>
