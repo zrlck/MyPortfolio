@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
@@ -16,20 +15,29 @@ export default function Navbar() {
   const [currentHash, setCurrentHash] = useState("")
   const pathname = usePathname()
   const router = useRouter()
-
   const mobileMenuRef = useFocusTrap(isOpen)
+
+  // Lock body scroll when menu is open (important on mobile)
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
 
-    // Set the current hash
     setCurrentHash(window.location.hash)
 
     window.addEventListener("scroll", handleScroll)
 
-    // Update hash when it changes
     const handleHashChange = () => {
       setCurrentHash(window.location.hash)
     }
@@ -45,7 +53,6 @@ export default function Navbar() {
   useEffect(() => {
     const handleCloseMobileMenu = () => setIsOpen(false)
     document.addEventListener("closeMobileMenu", handleCloseMobileMenu)
-
     return () => {
       document.removeEventListener("closeMobileMenu", handleCloseMobileMenu)
     }
@@ -62,27 +69,28 @@ export default function Navbar() {
     { href: "/home#contact", label: "Contact", isPage: false },
   ]
 
-  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isPage: boolean) => {
-    // If it's a page navigation (not a section), let the default link behavior work
+  const handleNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    isPage: boolean
+  ) => {
     if (isPage) {
-      // Just close the mobile menu if it's open
       setIsOpen(false)
       return
     }
 
-    // Otherwise, handle section scrolling
     e.preventDefault()
 
-    // If it's a section on the current page
     if (href.includes("#") && pathname === "/home") {
       const sectionId = href.split("#")[1]
       const section = document.getElementById(sectionId)
       if (section) {
-        section.scrollIntoView({ behavior: "smooth" })
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" })
+        }, 50) // Fix for mobile smooth scroll
         setIsOpen(false)
       }
     } else {
-      // If it's a section on another page
       router.push(href)
       setIsOpen(false)
     }
@@ -90,7 +98,6 @@ export default function Navbar() {
 
   const handleResumeClick = (e: React.MouseEvent) => {
     setIsOpen(false)
-    // No need to prevent default - let the Link component handle navigation
   }
 
   const isActive = (href: string) => {
@@ -111,6 +118,7 @@ export default function Navbar() {
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         isScrolled ? "bg-background/80 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/home" className="flex items-center space-x-2 text-xl font-bold">
@@ -139,13 +147,17 @@ export default function Navbar() {
           </Button>
         </nav>
 
-        {/* Mobile Navigation Toggle */}
-        <button className="flex md:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+        {/* Mobile Toggle Button */}
+        <button
+          className="flex md:hidden p-2" // mobile-friendly touch target
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
           {isOpen ? <X className="h-6 w-6 text-foreground" /> : <Menu className="h-6 w-6 text-foreground" />}
         </button>
       </div>
 
-      {/* Backdrop overlay for mobile menu */}
+      {/* Mobile Menu Backdrop */}
       {isOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm md:hidden"
@@ -154,7 +166,7 @@ export default function Navbar() {
         />
       )}
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -163,6 +175,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="absolute left-0 right-0 top-16 z-50 md:hidden"
+            tabIndex={-1}
           >
             <div
               ref={mobileMenuRef}
