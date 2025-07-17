@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const { name, email, message } = await request.json()
 
     // Ensure the recipient email is set via environment variable
-    const recipientEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL
+    const recipientEmail = process.env.CONTACT_EMAIL
 
     if (!recipientEmail) {
       console.error("NEXT_PUBLIC_CONTACT_EMAIL environment variable is not set.")
