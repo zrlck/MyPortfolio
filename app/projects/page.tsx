@@ -23,59 +23,59 @@ export default function ProjectsPage() {
       title: "Photoluminescence Spectroscopy Setup",
       description:
         "Designed and built a custom photoluminescence spectroscopy setup for analyzing quantum photonic materials, enabling precise measurement of single photon emitters.",
-      image: "/photoluminescence-setup.png",
-      tags: ["Optics", "Hardware", "Quantum"],
-      category: "research",
+      image: "/threelasers.png",
+      tags: ["Optics", "Hardware", "Quantum", "Photonics", "Research"],
+      category: "hardware",
       demoUrl: "#",
       codeUrl: "#",
     },
     {
-      title: "Quantum Photonics Simulation",
+      title: "Machine Learning NEMS Resonator Analysis",
       description:
-        "Developed a simulation of photonic chip design with light entanglement visualization, helping researchers understand quantum behavior in photonic circuits.",
+        "Developed a machine learning model to analyze nonlinear dynamics in NEMS resonators, improving understanding of quantum photonic systems.",
       image: "/entangled-paths.png",
-      tags: ["Simulation", "Quantum", "Visualization"],
-      category: "research",
-      demoUrl: "#",
-      codeUrl: "#",
-    },
-    {
-      title: "STEM Education Platform",
-      description:
-        "Created an interactive platform for bilingual STEM education, featuring hardware demonstrations and circuit simulations to make engineering concepts accessible.",
-      image: "/interactive-circuit-learning.png",
-      tags: ["Education", "Bilingual", "Interactive"],
-      category: "education",
-      demoUrl: "#",
-      codeUrl: "#",
-    },
-    {
-      title: "Quantum Circuit Simulator",
-      description:
-        "Built a web-based quantum circuit simulator that allows users to design and test quantum algorithms with a visual interface.",
-      image: "/quantum-optics-bench.png",
-      tags: ["Quantum", "Web", "Simulation"],
+      tags: ["Simulation", "Quantum", "Visualization", "Machine Learning"],
       category: "software",
       demoUrl: "#",
       codeUrl: "#",
     },
     {
-      title: "Bilingual Engineering Tutorials",
+      title: "Machine Learning Soil Grain Tracking",
       description:
-        "Created a series of bilingual tutorials on engineering concepts, making technical knowledge accessible to Spanish-speaking students.",
-      image: "/confident-latino-engineer.png",
-      tags: ["Education", "Bilingual", "Engineering"],
-      category: "education",
+        "Created a computer vision project to track soil grain movement during earthquakes, enhancing understanding of soil dynamics.",
+      image: "/interactive-circuit-learning.png",
+      tags: ["Software", "Soil-tracking", "Python", "Computer Vision", "Image Processing"],
+      category: "software",
       demoUrl: "#",
       codeUrl: "#",
     },
     {
-      title: "Single Photon Detector Interface",
+      title: "Self-detected parking guidance system",
       description:
-        "Developed a software interface for controlling and collecting data from single photon detectors in quantum optics experiments.",
-      image: "/photoluminescence-setup.png",
-      tags: ["Hardware", "Software", "Quantum"],
-      category: "research",
+        "Built a project car for self-detected parking guidance system using computer vision and machine learning, providing real-time parking space availability.",
+      image: "/joker.jpeg",
+      tags: ["Arduino", "Cardboard", "Simulation", "Computer Vision"],
+      category: "hardware",
+      demoUrl: "#",
+      codeUrl: "#",
+    },
+    {
+      title: "AggieShare from HackDavis 2025",
+      description:
+        "Developed a donation platform for students to exchange essential items, featuring animated cloud visuals and a smooth, responsive user interface.",
+      image: "/Aggieshare.png",
+      tags: ["Vercel", "Node.js", "React", "Next.js", "Tailwind CSS", "MongoDB"],
+      category: "software",
+      demoUrl: "#",
+      codeUrl: "#",
+    },
+    {
+      title: "dExtra Tools from AgentHacks 2025",
+      description:
+        "Enhanced a Chrome extension with LLM-based memory and planning tools, enabling AI agents to better support users through contextual task assistance.",
+      image: "/joker.jpeg",
+      tags: ["MCP", "Software", "Backend", "LLM", "AI Agents"],
+      category: "software",
       demoUrl: "#",
       codeUrl: "#",
     },
@@ -86,9 +86,8 @@ export default function ProjectsPage() {
 
   const categories = [
     { id: "all", label: "All Projects" },
-    { id: "research", label: "Research" },
-    { id: "education", label: "Education" },
     { id: "software", label: "Software" },
+    { id: "hardware", label: "Hardware" },
   ]
 
   return (
@@ -114,7 +113,7 @@ export default function ProjectsPage() {
         >
           <h1 className="text-4xl font-bold tracking-tight">Projects</h1>
           <p className="mt-4 text-xl text-muted-foreground">
-            Explore my work in quantum photonics, education, and software development
+            Explore my work in engineering and optics
           </p>
         </motion.div>
 
