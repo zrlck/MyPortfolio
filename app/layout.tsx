@@ -15,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "Ricardo Gonzales | Computer Engineer & Quantum Photonics Researcher",
+  title: "Ricardo Gonzales | Computer Engineer at UC Davis",
   description:
     "Portfolio of Ricardo Gonzales, a computer engineer specializing in quantum photonics research, hardware design, and STEM education.",
   keywords: ["Computer Engineer", "Quantum Photonics Research", "Engineering Portfolio", "Ricardo Gonzales"],
