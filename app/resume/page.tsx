@@ -29,9 +29,11 @@ export default function ResumePage() {
             </Link>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-            <Button className="flex items-center gap-2">
-              <Download className="h-4 w-4" />
-              Download PDF
+            <Button asChild className="flex items-center gap-2">
+              <a href="/ricardo-gonzales-resume.pdf" download>
+                <Download className="h-4 w-4" />
+                Download PDF
+              </a>
             </Button>
           </motion.div>
         </div>
@@ -43,13 +45,13 @@ export default function ResumePage() {
           className="mb-12 text-center"
         >
           <h1 className="text-4xl font-bold tracking-tight">Ricardo Gonzales</h1>
-          <p className="mt-2 text-xl text-muted-foreground">Computer Engineer | Photonics Enthusiast</p>
+          <p className="mt-2 text-xl text-muted-foreground">Computer Engineer | Quantum Photonics Researcher</p>
           <div className="mt-4 flex justify-center space-x-4 text-sm text-muted-foreground">
-            <span>rigonzales@ucdavis.edu</span>
+            <span>ricardo.gonzales@example.com</span>
             <span>•</span>
-            <span>(805) 218-0998 CA</span>
+            <span>Santa Barbara, CA</span>
             <span>•</span>
-            <span>Davis, CA</span>
+            <span>LinkedIn</span>
           </div>
         </motion.div>
 
