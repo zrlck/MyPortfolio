@@ -26,14 +26,13 @@ export default function ResumePage() {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* Optional overlay for better text readability */}
+      {/* Dark overlay for readability */}
       <div className="fixed inset-0 z-10 bg-black/40" />
 
-      {/* Content */}
-      <div className="relative z-20">
+      {/* Main content above overlay */}
+      <div className="relative z-20 flex min-h-screen flex-col">
         <Navbar />
         <main className="container mx-auto px-4 py-32">
-          {/* Rest of the content remains the same */}
           <div className="mb-8 flex items-center justify-between">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
               <Link href="/home">
@@ -53,7 +52,6 @@ export default function ResumePage() {
             </motion.div>
           </div>
 
-          {/* All the existing content remains exactly the same */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,28 +69,20 @@ export default function ResumePage() {
             </div>
           </motion.div>
 
-          {/* All existing sections remain the same - Education, Experience, Leadership, Skills, Certifications */}
           <div className="space-y-8">
-            {/* Education Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
+            {/* Education */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}>
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Education</CardTitle>
-                </CardHeader>
+                <CardHeader><CardTitle className="text-2xl">Education</CardTitle></CardHeader>
                 <CardContent className="space-y-6">
                   <div className="timeline-item">
                     <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
                       <h3 className="text-lg font-bold">University of California, Davis</h3>
-                      <span className="text-sm text-muted-foreground">2022 - Present</span>
+                      <span className="text-sm text-muted-foreground">2024 - Present</span>
                     </div>
                     <p className="text-primary">B.S. Computer Engineering</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      Focusing on hardware design, quantum computing, and embedded systems. Active member of the Society
-                      of Hispanic Professional Engineers (SHPE).
+                      Focusing on hardware design, photonics, and embedded systems. Active member of SHPE, TRIO SSS Member, and AvenueE Scholar.
                     </p>
                   </div>
 
@@ -101,145 +91,132 @@ export default function ResumePage() {
                       <h3 className="text-lg font-bold">Oxnard College</h3>
                       <span className="text-sm text-muted-foreground">2020 - 2022</span>
                     </div>
-                    <p className="text-primary">A.S. Engineering</p>
+                    <p className="text-primary">A.S. Math & Physics</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      Completed foundational engineering coursework with honors. Served as a STEM tutor and participated
-                      in the TRIO Student Support Services program.
+                      Completed foundational engineering coursework with honors. Served as a STEM tutor and participated in TRIO, EOPS, OMEGA, and SHPE.
                     </p>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
 
-            {/* Experience Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
+            {/* Experience */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Experience</CardTitle>
-                </CardHeader>
+                <CardHeader><CardTitle className="text-2xl">Experience</CardTitle></CardHeader>
+                <CardContent className="space-y-6">
+                  {/* BU */}
+                  <div className="timeline-item">
+                    <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                      <h3 className="text-lg font-bold">Boston University Photonics Center, Ekinci Lab</h3>
+                      <span className="text-sm text-muted-foreground">Summer 2025</span>
+                    </div>
+                    <p className="text-primary">Photonics Research Intern</p>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      • Applied machine learning to analyze NEMS resonators. Focused on nonlinear dynamic modeling using PyTorch.
+                      <br />
+                      • Collaborated on photonics/AI integration, predictive system behavior, and performance analysis.
+                    </p>
+                  </div>
+
+                  {/* UC Davis */}
+                  <div className="timeline-item">
+                    <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                      <h3 className="text-lg font-bold">UC Davis Center for Geotechnical Modeling, E-SEARCH</h3>
+                      <span className="text-sm text-muted-foreground">Spring & Summer 2025</span>
+                    </div>
+                    <p className="text-primary">Machine Learning Researcher</p>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      • Built neural networks to classify wearable medical data; evaluated with precision/recall & ROC.
+                      <br />
+                      • Used OpenCV for grain movement tracking in soil via image processing and visualization.
+                    </p>
+                  </div>
+
+                  {/* UCSB */}
+                  <div className="timeline-item">
+                    <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                      <h3 className="text-lg font-bold">UC Santa Barbara Quantum Photonics Lab, Moody Lab</h3>
+                      <span className="text-sm text-muted-foreground">Summer 2024</span>
+                    </div>
+                    <p className="text-primary">Photonics Research Intern</p>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      • Modeled and tested single-photon emitters using KLayout, Blender, and spectroscopy techniques.
+                    </p>
+                  </div>
+
+                  {/* STEM Tutor */}
+                  <div className="timeline-item">
+                    <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                      <h3 className="text-lg font-bold">Oxnard College STEM Center</h3>
+                      <span className="text-sm text-muted-foreground">2022 - 2024</span>
+                    </div>
+                    <p className="text-primary">General STEM Tutor</p>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      • Provided bilingual tutoring and led sessions in physics, math, and CS for underrepresented STEM students.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Leadership */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
+              <Card>
+                <CardHeader><CardTitle className="text-2xl">Leadership</CardTitle></CardHeader>
                 <CardContent className="space-y-6">
                   <div className="timeline-item">
                     <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                      <h3 className="text-lg font-bold">UCSB Quantum Photonics Lab</h3>
-                      <span className="text-sm text-muted-foreground">2023 - Present</span>
+                      <h3 className="text-lg font-bold">SHPE</h3>
+                      <span className="text-sm text-muted-foreground">2023 - 2024</span>
                     </div>
-                    <p className="text-primary">Research Assistant</p>
+                    <p className="text-primary">Chapter President</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      Conducting research on single photon emitters for quantum computing applications. Developing and
-                      characterizing quantum photonic devices using KLayout simulation and photoluminescence
-                      spectroscopy.
+                      • Led chapter initiatives, hosted events, and promoted STEM access for Hispanic students.
                     </p>
                   </div>
 
                   <div className="timeline-item">
                     <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
                       <h3 className="text-lg font-bold">Oxnard College STEM Center</h3>
-                      <span className="text-sm text-muted-foreground">2021 - 2022</span>
+                      <span className="text-sm text-muted-foreground">2022 - 2024</span>
                     </div>
-                    <p className="text-primary">STEM Tutor</p>
+                    <p className="text-primary">Mentor</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      Provided bilingual tutoring in physics, mathematics, and computer science. Developed educational
-                      materials and workshops to support student success.
-                    </p>
-                  </div>
-
-                  <div className="timeline-item">
-                    <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                      <h3 className="text-lg font-bold">Camarillo Healthcare District</h3>
-                      <span className="text-sm text-muted-foreground">2020 - 2021</span>
-                    </div>
-                    <p className="text-primary">Caregiver</p>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Provided compassionate care for patients with diverse needs. Developed technical solutions to
-                      improve patient monitoring and care delivery.
+                      • Mentored first-gen students and led study skills workshops. Helped organize STEM outreach events.
                     </p>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
 
-            {/* Leadership Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
+            {/* Skills */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}>
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Leadership</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="timeline-item">
-                    <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                      <h3 className="text-lg font-bold">Society of Hispanic Professional Engineers (SHPE)</h3>
-                      <span className="text-sm text-muted-foreground">2022 - 2023</span>
-                    </div>
-                    <p className="text-primary">Chapter President</p>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Led chapter initiatives to promote STEM education and career development. Organized networking
-                      events, workshops, and community outreach programs.
-                    </p>
-                  </div>
-
-                  <div className="timeline-item">
-                    <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                      <h3 className="text-lg font-bold">TRIO Student Support Services</h3>
-                      <span className="text-sm text-muted-foreground">2021 - 2022</span>
-                    </div>
-                    <p className="text-primary">Peer Mentor</p>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Mentored first-generation college students in navigating academic challenges. Developed and
-                      facilitated workshops on study skills and time management.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Skills Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Skills</CardTitle>
-                </CardHeader>
+                <CardHeader><CardTitle className="text-2xl">Skills</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
+                  {/* Programming */}
                   <div>
                     <h3 className="mb-2 font-medium">Programming & Software</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="skill-badge">x86 Assembly</span>
-                      <span className="skill-badge">Python</span>
-                      <span className="skill-badge">C++</span>
-                      <span className="skill-badge">Git</span>
-                      <span className="skill-badge">MATLAB</span>
-                      <span className="skill-badge">Arduino</span>
-                      <span className="skill-badge">Blender</span>
-                      <span className="skill-badge">Solidworks</span>
-                      <span className="skill-badge">OrCAD</span>
-                      <span className="skill-badge">PSpice</span>
-                      <span className="skill-badge">KLayout</span>
+                      {[
+                        "x86 Assembly", "Python", "C++", "Git", "MATLAB", "Arduino", "Blender", "Solidworks",
+                        "OrCAD", "PSpice", "KLayout", "OpenCV", "PyTorch", "TensorFlow", "Quartus Prime", "Multisim"
+                      ].map(skill => <span className="skill-badge" key={skill}>{skill}</span>)}
                     </div>
                   </div>
-
+                  {/* Hardware */}
                   <div>
                     <h3 className="mb-2 font-medium">Hardware & Equipment</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="skill-badge">Optical benches</span>
-                      <span className="skill-badge">Breadboard design</span>
-                      <span className="skill-badge">Laser/mirror alignments</span>
-                      <span className="skill-badge">Computer building</span>
-                      <span className="skill-badge">Circuit design</span>
-                      <span className="skill-badge">Photoluminescence spectroscopy</span>
+                      {[
+                        "Optical benches", "Breadboard design", "Laser/mirror alignments", "Computer building",
+                        "Circuit design", "Photoluminescence spectroscopy", "NEMS Resonators", "Photolithography",
+                        "Quantum optics experiments", "PCB design", "FPGA", "Microcontrollers"
+                      ].map(skill => <span className="skill-badge" key={skill}>{skill}</span>)}
                     </div>
                   </div>
-
+                  {/* Languages */}
                   <div>
                     <h3 className="mb-2 font-medium">Languages</h3>
                     <div className="flex flex-wrap gap-2">
@@ -251,30 +228,22 @@ export default function ResumePage() {
               </Card>
             </motion.div>
 
-            {/* Certifications Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
+            {/* Certifications */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}>
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Certifications & Awards</CardTitle>
-                </CardHeader>
+                <CardHeader><CardTitle className="text-2xl">Certifications & Awards</CardTitle></CardHeader>
                 <CardContent className="space-y-4">
                   <div className="timeline-item">
-                    <h3 className="font-medium">International Tutor Training Program Certification (Level I & II)</h3>
-                    <p className="text-sm text-muted-foreground">College Reading & Learning Association, 2022</p>
+                    <h3 className="font-medium">International Tutor Training Certification (Level I & II)</h3>
+                    <p className="text-sm text-muted-foreground">College Reading & Learning Association, 2024</p>
                   </div>
-
                   <div className="timeline-item">
                     <h3 className="font-medium">American Caregiver Association Certification</h3>
-                    <p className="text-sm text-muted-foreground">American Caregiver Association, 2021</p>
+                    <p className="text-sm text-muted-foreground">American Caregiver Association, 2022</p>
                   </div>
-
                   <div className="timeline-item">
                     <h3 className="font-medium">Northrop Grumman Scholarship</h3>
-                    <p className="text-sm text-muted-foreground">Northrop Grumman Foundation, 2023</p>
+                    <p className="text-sm text-muted-foreground">Northrop Grumman Foundation, 2024</p>
                   </div>
                 </CardContent>
               </Card>
