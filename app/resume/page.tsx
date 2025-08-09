@@ -116,6 +116,8 @@ export default function ResumePage() {
                       • Applied machine learning to analyze NEMS resonators. Focused on nonlinear dynamic modeling using PyTorch.
                       <br />
                       • Collaborated on photonics/AI integration, predictive system behavior, and performance analysis.
+                      <br />
+                      • Experimented with NEMS device fabrication and data acquisition using Python and custom Python scripts.
                     </p>
                   </div>
 
