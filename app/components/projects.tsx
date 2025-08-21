@@ -134,7 +134,7 @@ export default function Projects() {
                   <Button asChild variant="ghost" size="sm">
                     <a href={project.demoUrl} className="flex items-center gap-1">
                       <Play className="h-4 w-4" />
-                      Demo
+                      Research Poster
                     </a>
                   </Button>
                   <Button asChild variant="ghost" size="sm">
