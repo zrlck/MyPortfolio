@@ -53,7 +53,7 @@ export default function About() {
               <p>
                 Before this, I interned at UCSB as a quantum photonics researcher, working with single-photon emitters
                 and doing photoluminiscence analysis. Along the way, I stayed involved in the community through
-                leadership roles in EOP, TRIO SSS, and SHPE
+                leadership roles in EOP, TRIO SSS, and SHPE.
               </p>
               <p>
                 I loved building tech that connects theory to the real world, and I am always looking for new
