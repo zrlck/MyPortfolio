@@ -51,7 +51,7 @@ export default function About() {
                 computer vision to track how soil grains move during earthquakes. A mix of everything I love!
               </p>
               <p>
-                Before this, I interned at UCSB as a quantum photonics researcher — working with single-photon emitters
+                Before this, I interned at UCSB as a quantum photonics researcher, working with single-photon emitters
                 and doing photoluminiscence analysis. Along the way, I stayed involved in the community through
                 leadership roles in EOP, TRIO SSS, and SHPE
               </p>
