@@ -42,7 +42,7 @@ export default function About() {
             <h3 className="mb-4 text-2xl font-bold">My Journey</h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Hey! I am Ricardo — a passionate UC Davis computer engineering student with a strong foundation in
+                Hello! I am Ricardo, a passionate UC Davis computer engineering student with a strong foundation in
                 quantum photonics, machine learning, hardware design, and creative problem solving skills!
               </p>
               <p>
