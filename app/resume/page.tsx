@@ -186,7 +186,11 @@ export default function ResumePage() {
                     </div>
                     <p className="text-primary">Chapter President</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      • Led chapter initiatives, hosted events, and promoted STEM access for Hispanic students.
+                      • Worked with different programs to provide resources to students and members of the Society of Hispanic Professional Engineers
+                      <br />
+                      • Participated in conventions and programs for academic professional achievement
+                      <br />
+                      • Created interactive, professional, and self-learning activities for better community growth and active participation
                     </p>
                   </div>
 
@@ -198,6 +202,10 @@ export default function ResumePage() {
                     <p className="text-primary">Mentor</p>
                     <p className="mt-2 text-sm text-muted-foreground">
                       • Mentored first-gen students and led study skills workshops. Helped organize STEM outreach events.
+                      <br />
+                      • Assisted in the development of the STEM Center's tutoring program and resources.
+                      <br />
+                      • Collaborated with faculty to enhance student engagement and success in STEM fields.
                     </p>
                   </div>
                 </CardContent>
