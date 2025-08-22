@@ -267,6 +267,10 @@ export default function ResumePage() {
                     <h3 className="font-medium">Northrop Grumman Scholarship</h3>
                     <p className="text-sm text-muted-foreground">Northrop Grumman Foundation, 2024</p>
                   </div>
+                  <div className="timeline-item">
+                    <h3 className="font-medium">Altium Designed Certification</h3>
+                    <p className="text-sm text-muted-foreground">Altium Company, 2025</p>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
