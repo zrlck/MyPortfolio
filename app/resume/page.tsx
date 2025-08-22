@@ -89,11 +89,11 @@ export default function ResumePage() {
                   <div className="timeline-item">
                     <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
                       <h3 className="text-lg font-bold">Oxnard College</h3>
-                      <span className="text-sm text-muted-foreground">2020 - 2022</span>
+                      <span className="text-sm text-muted-foreground">2021 - 2024</span>
                     </div>
                     <p className="text-primary">A.S. Math & Physics</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      Completed foundational engineering coursework with honors. Served as a STEM tutor and participated in TRIO, EOPS, OMEGA, and SHPE.
+                      Completed general education and foundational courses in engineering. Participated in STEM tutoring and support programs such as SHPE, TRIO, and EOPS.
                     </p>
                   </div>
                 </CardContent>
@@ -113,11 +113,11 @@ export default function ResumePage() {
                     </div>
                     <p className="text-primary">Photonics Research Intern</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      • Applied machine learning to analyze NEMS resonators. Focused on nonlinear dynamic modeling using PyTorch.
+                      • Worked primarily with the use of machine learning for discovering governing equations of NEMS resonators
                       <br />
-                      • Collaborated on photonics/AI integration, predictive system behavior, and performance analysis.
+                      • Wrote different Python frameworks and environments for the utilization of experimental data from NEMS data measured from an interferometer setup
                       <br />
-                      • Experimented with NEMS device fabrication and data acquisition using Python and custom Python scripts.
+                      • Designed optical components and chip devices for paper proposals
                     </p>
                   </div>
 
@@ -129,9 +129,11 @@ export default function ResumePage() {
                     </div>
                     <p className="text-primary">Machine Learning Researcher</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      • Built neural networks to classify wearable medical data; evaluated with precision/recall & ROC.
+                      • Developed a computer vision pipeline to detect and track soil surface markers in centrifuge experiments studying earthquake-induced soil liquefaction
                       <br />
-                      • Used OpenCV for grain movement tracking in soil via image processing and visualization.
+                      • Implemented algorithms such as contrast enhancement, morphological filtering, clustering, and template matching for automation in image processing
+                      <br />
+                      • Tested scalable workflows to handling multi-image datasets based on research data
                     </p>
                   </div>
 
@@ -143,7 +145,11 @@ export default function ResumePage() {
                     </div>
                     <p className="text-primary">Photonics Research Intern</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      • Modeled and tested single-photon emitters using KLayout, Blender, and spectroscopy techniques.
+                      • Collaborated with two graduate students to investigate quantum photonic devices with light entanglement
+                      <br />
+                      • Designed and animated photonic chips and optical components from Thorlabs using Blender and SolidWorks
+                      <br />
+                      • Explored and collected data of photoluminescence processes and created simulations based on research
                     </p>
                   </div>
 
@@ -155,7 +161,13 @@ export default function ResumePage() {
                     </div>
                     <p className="text-primary">General STEM Tutor</p>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      • Provided bilingual tutoring and led sessions in physics, math, and CS for underrepresented STEM students.
+                      • Tutored +200 hours of engineering math, physics, and chemistry courses in English & Spanish 
+                      <br />
+                      • Organized group tutoring sessions to assist students for team effort learning
+                      <br />
+                      • Provided full instructional support for students who were unable to attend regular classes
+                      <br />
+                      • Embedded classroom tutor that discussed concepts taught in class and created classroom activities
                     </p>
                   </div>
                 </CardContent>
