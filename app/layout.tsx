@@ -15,10 +15,10 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "Ricardo Gonzales | Computer Engineer at UC Davis",
+  title: "Ricardo Gonzales | Electrical & Computer Engineer at UC Davis",
   description:
-    "Portfolio of Ricardo Gonzales, a computer engineer specializing in quantum photonics research, hardware design, and STEM education.",
-  keywords: ["Computer Engineer", "Quantum Photonics Research", "Engineering Portfolio", "Ricardo Gonzales"],
+    "Portfolio of Ricardo Gonzales, an electrical and computer engineer specializing in quantum photonics research, hardware design, and STEM education.",
+  keywords: ["Electrical Engineer", "Computer Engineer", "Quantum Photonics Research", "Engineering Portfolio", "Ricardo Gonzales"],
   icons: {
     icon: "/SAW24T.png", // Changed to your desired RG favicon path
   },
