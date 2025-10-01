@@ -39,7 +39,7 @@ export default function Hero() {
           >
             <span className="block text-white">Ricardo Gonzales</span>
             <span className="mt-2 block text-2xl font-medium text-gray-200 sm:text-3xl md:text-4xl">
-              Aspiring Computer Engineer
+              Aspiring Electrical & Computer Engineer
             </span>
           </motion.h1>
 

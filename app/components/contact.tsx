@@ -116,7 +116,7 @@ export default function Contact() {
                   <div className="mt-6 rounded-lg bg-primary/5 p-4">
                     <p className="text-sm text-muted-foreground">
                       I'm always open to discussing new projects, research opportunities, or potential collaborations in
-                      quantum photonics and computer engineering.
+                      quantum photonics, electrical, and computer engineering.
                     </p>
                   </div>
                 </CardContent>
