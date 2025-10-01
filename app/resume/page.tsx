@@ -59,7 +59,7 @@ export default function ResumePage() {
             className="mb-12 text-center"
           >
             <h1 className="text-4xl font-bold tracking-tight">Ricardo Gonzales</h1>
-            <p className="mt-2 text-xl text-muted-foreground">Computer Engineer | Photonics Enthusiast</p>
+            <p className="mt-2 text-xl text-muted-foreground">Electrical & Computer Engineer | Photonics Enthusiast</p>
             <div className="mt-4 flex justify-center space-x-4 text-sm text-muted-foreground">
               <span>Davis, California</span>
               <span>•</span>
