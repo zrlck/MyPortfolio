@@ -80,7 +80,7 @@ export default function ResumePage() {
                       <h3 className="text-lg font-bold">University of California, Davis</h3>
                       <span className="text-sm text-muted-foreground">2024 - Present</span>
                     </div>
-                    <p className="text-primary">B.S. Computer Engineering</p>
+                    <p className="text-primary">B.S. Electrical & Computer Engineering</p>
                     <p className="mt-2 text-sm text-muted-foreground">
                       Focusing on hardware design, photonics, and embedded systems. Active member of SHPE, TRIO SSS Member, and AvenueE Scholar.
                     </p>
