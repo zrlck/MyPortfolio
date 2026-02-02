@@ -133,14 +133,10 @@ export default function Projects() {
                 <CardFooter className="flex justify-between">
                   <Button asChild variant="ghost" size="sm">
                     <a href={project.demoUrl} className="flex items-center gap-1">
-                      <Play className="h-4 w-4" />
-                      Research Poster
                     </a>
                   </Button>
                   <Button asChild variant="ghost" size="sm">
                     <a href={project.codeUrl} className="flex items-center gap-1">
-                      <Github className="h-4 w-4" />
-                      Code
                     </a>
                   </Button>
                 </CardFooter>
